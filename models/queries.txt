@@ -1,0 +1,44 @@
+-- Create table users(
+-- userID serial primary key,
+-- 	email varChar unique,
+-- 	password varChar,
+-- 	username varChar
+-- )
+
+-- Create table tours(
+-- tourID serial primary key,
+-- 	tourInfo varChar
+-- )
+
+-- Create table favorites(
+-- id serial primary key,
+-- 	userID int,
+-- 	tourID int,
+-- 	foreign key(tourID) references tours(tourID)
+-- )
+
+-- select * from users
+
+-- Insert into tours (tourInfo)
+-- values (
+-- '{"tourname": "Tour one","time": "1,5 hours","stops": [{"name": "stop1","address": "adress","time": "6 min"},{"name": "stop2","address": "adress","time": "6 min"},{"name": "stop3","address": "adress","time": "6 min"}]}'
+-- ),
+-- (
+-- '{"tourname": "Tour one","time": "1,5 hours","stops": [{"name": "stop1","address": "adress","time": "6 min"},{"name": "stop2","address": "adress","time": "6 min"},{"name": "stop3","address": "adress","time": "6 min"}]}'
+-- ),
+-- (
+-- '{"tourname": "Tour one","time": "1,5 hours","stops": [{"name": "stop1","address": "adress","time": "6 min"},{"name": "stop2","address": "adress","time": "6 min"},{"name": "stop3","address": "adress","time": "6 min"}]}'
+-- )
+
+-- select * from tours
+-- delete from favorites where tourid isnull
+
+-- SELECT tourinfo FROM tours
+-- INNER JOIN favorites ON tours.tourid = favorites.tourid
+-- where favorites.userid = 12
+
+-- INSERT INTO favorites (userid, tourid) VALUES
+--     ( 12, (SELECT tourid from tours WHERE tourid=7) ),
+--     ( 3, (SELECT tourid from tours WHERE tourid=7));
+
+-- select * from favorites
