@@ -25,14 +25,16 @@ export const _login = async (req, res) => {
       const { email, password } = req.body;
   
       const row = await login(email.toLowerCase());
-  
+      //here should be a userID in the row we could check in the token if the token belong to this user
+      
       if (row.length === 0)
         return res.status(404).json({ msg: "Email not found, please Sign Up" });
   
       const match = bcrypt.compareSync(password + "", row[0].password);
       if (!match) return res.status(404).json({ msg: "Wrong password" });
   
-      const userid = row[0].userID;
+      const userid = row[0].userid;
+      const username = row[0].username;
       const useremail = row[0].email;
 
       const secret = process.env.ACCESS_TOKEN_SECRET
@@ -46,7 +48,7 @@ export const _login = async (req, res) => {
             maxAge: 60 * 1000,
         });
 
-        res.json({ accesstoken });
+        res.json({ accesstoken,  userid, username});
         } catch (e) {
           console.log(e);
           res.status(404).json({ msg: "Something went wrong with token" });
@@ -70,7 +72,7 @@ export const _addFavorite = async (req,res) => {
   const {userid, tourid} = req.body
   try{
       const row = await addFavorite(userid, tourid)
-      res.json(row)
+      res.sendStatus(200)
 
   }catch(e){
       console.log(e)

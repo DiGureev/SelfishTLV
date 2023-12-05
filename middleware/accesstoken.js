@@ -3,7 +3,11 @@ import dotenv from 'dotenv';
 dotenv.config()
 
 export const token = async (req, res, next) => {
-    let accesstoken = req.cookies.token;
+
+    let accesstoken = req.body.token; // doesn't work right
+    // console.log(req.cookies.token)
+    // let accesstoken = req.cookies.token
+    // console.log(accesstoken)
 
     if (!accesstoken){
         return res.status(403).json({ msg:"Not verified"})

@@ -6,10 +6,9 @@ const userRouter = express.Router();
 
 userRouter.post("/signup", _register);
 userRouter.post("/login", _login);//mb we need to set here a middleware
-userRouter.get("/:id", _getusername);
 userRouter.get("/favorites/:id", _getFavorite);
 userRouter.post("/favorites", _addFavorite);
-userRouter.get("/verify", token, (req, res) => {
+userRouter.post("/verify", token, (req, res) => {
     res.sendStatus(201);
 });
 

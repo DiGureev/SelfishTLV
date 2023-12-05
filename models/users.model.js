@@ -18,6 +18,6 @@ export const addFavorite = (userid, tourid) => {
 
 export const getFavorite = (userid) => {
     return db('favorites').innerJoin('tours', 'favorites.tourid','tours.tourid')
-    .select('tours.tourinfo')
+    .select('tours.tourid', 'tours.tourinfo')
     .where({userid})
 };
