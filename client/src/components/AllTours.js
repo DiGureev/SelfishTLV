@@ -1,6 +1,7 @@
 import axios from 'axios';
 import {useState, useEffect} from 'react';
 import TourCard from './TourCard.js';
+import backimg from "../img/selftoursbackimg.png"
 
 
 const AllTours = (props) => {
@@ -21,15 +22,20 @@ const AllTours = (props) => {
     }
 
     return (
-        <>
-        <h1>Self-tours</h1>
-        <p>See for yourself and show your guests</p>
+        <div className='container'>
+        <div className='leaddiv'>
+            <div>
+                <h1>Self-tours</h1>
+                <p style={{color: '#89A3F9'}}>See for yourself and show your guests</p>
+            </div>
+            <img src={backimg} style={{width:'50%'}}/>
+        </div>
         <div>
             {
                 data.map(item => <TourCard element={item}/>)
             }
         </div>
-        </>
+        </div>
     )
 
 }

@@ -21,3 +21,7 @@ export const getFavorite = (userid) => {
     .select('tours.tourid', 'tours.tourinfo')
     .where({userid})
 };
+
+export const deleteFavorite = (userid, tourid) => {
+    return db('favorites').where({userid, tourid}).del();
+};

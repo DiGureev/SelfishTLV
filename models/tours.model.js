@@ -5,5 +5,15 @@ export const gettour = (tourid) => {
 }
 
 export const getAllTours = () => {
-    return db('tours').select("tourid","tourinfo");
+    return db('tours').select("tourid","tourinfo", "likes");
 }
+
+export const getLikes = (tourid) => {
+    return db('tours').select('likes').where({tourid});
+}
+
+
+export const updateLikes = (tourid, likes) => {
+    return db('tours').update({likes}, ['likes']).where({tourid});
+}
+

@@ -2,6 +2,9 @@ import { useState, useContext } from "react"
 import {Link, useNavigate} from 'react-router-dom'
 import axios from 'axios';
 import { AppContext } from "../App.js";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart , faBookmark} from '@fortawesome/free-solid-svg-icons'
+import icon from "../img/icon.png"
 
 const TourCard = (props)=>{
     const {userID} = useContext(AppContext)
@@ -29,12 +32,21 @@ const TourCard = (props)=>{
         }
     }
 
-    return (<div key={item.tourid}>
-                            <h2>{info.name}</h2>
+
+    return (<div className="tourCards" key={item.tourid}>
+                            <div className="icon"><img src={icon}/></div>
+                            <div style={{width: '600px'}}>
+                            <h2>{info.tourname}</h2>
                             <p>{info.time}</p>
+                            <p>{info.description}</p>
+                            <div style={{display:'flex', justifyContent: 'right'}}>
+                                <p style={{marginRight:'10px'}}><FontAwesomeIcon icon={faHeart}/> {item.likes}</p>
+                                <p><FontAwesomeIcon icon={faBookmark} onClick={()=>addtoFav(item.tourid)}/></p>
+                                </div>
                             <Link to={`/tours/${item.tourid}`}>Go to the Tour</Link>
-                            <button onClick={()=>addtoFav(item.tourid)}>Add to Fav</button>
+                            {/* <button onClick={()=>addtoFav(item.tourid)}>Add to Fav</button> */}
                             <p style={{visibility: visability}}>Added</p>
+                            </div>
              </div>
     )
 }

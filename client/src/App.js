@@ -9,6 +9,7 @@ import UserPage from './components/UserPage.js';
 import TourPage from './components/TourPage.js';
 import AllTours from './components/AllTours.js';
 import Main from './components/Main.js';
+import Footer from './components/Footer.js'
 
 export const AppContext = createContext()
 
@@ -21,6 +22,7 @@ function App() {
     <AppContext.Provider value={{token, setToken, userID, setId, username, setName}}>
     <div className="App">
       <Nav/>
+      <div className="main">
       <Routes>
         <Route path='/' element={<Main/>}/>
         <Route path='/login' element={<LoginReg title='Log In'/>}/>
@@ -28,7 +30,9 @@ function App() {
         <Route path='/users/:id' element={<Auth><UserPage/></Auth>}/>
         <Route path='/tours' element={<AllTours/>}/>
         <Route path='/tours/:id' element={<TourPage/>}/>
-      </Routes>    
+      </Routes>  
+      </div> 
+      <Footer/> 
     </div>
     </AppContext.Provider>
   );

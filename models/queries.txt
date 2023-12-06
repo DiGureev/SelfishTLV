@@ -8,6 +8,7 @@
 -- Create table tours(
 -- tourID serial primary key,
 -- 	tourInfo varChar
+-- likes int
 -- )
 
 -- Create table favorites(
@@ -21,13 +22,13 @@
 
 -- Insert into tours (tourInfo)
 -- values (
--- '{"tourname": "Tour one","time": "1,5 hours","stops": [{"name": "stop1","address": "adress","time": "6 min"},{"name": "stop2","address": "adress","time": "6 min"},{"name": "stop3","address": "adress","time": "6 min"}]}'
+-- `{"tourname": "Tour one","time": "1,5 hours","stops": [{"name": "stop1","address": "adress","time": "6 min"},{"name": "stop2","address": "adress","time": "6 min"},{"name": "stop3","address": "adress","time": "6 min"}]}`
 -- ),
 -- (
--- '{"tourname": "Tour one","time": "1,5 hours","stops": [{"name": "stop1","address": "adress","time": "6 min"},{"name": "stop2","address": "adress","time": "6 min"},{"name": "stop3","address": "adress","time": "6 min"}]}'
+-- `{"tourname": "Tour one","time": "1,5 hours","stops": [{"name": "stop1","address": "adress","time": "6 min"},{"name": "stop2","address": "adress","time": "6 min"},{"name": "stop3","address": "adress","time": "6 min"}]}`
 -- ),
 -- (
--- '{"tourname": "Tour one","time": "1,5 hours","stops": [{"name": "stop1","address": "adress","time": "6 min"},{"name": "stop2","address": "adress","time": "6 min"},{"name": "stop3","address": "adress","time": "6 min"}]}'
+-- `{"tourname": "Tour one","time": "1,5 hours","stops": [{"name": "stop1","address": "adress","time": "6 min"},{"name": "stop2","address": "adress","time": "6 min"},{"name": "stop3","address": "adress","time": "6 min"}]}`
 -- )
 
 -- select * from tours
@@ -42,3 +43,18 @@
 --     ( 3, (SELECT tourid from tours WHERE tourid=7));
 
 -- select * from favorites
+
+
+tours
+
+The things I need in tourinfo
+
+{"tourname": "Neve Tzedek neighborhood","time": "2 hours 34 minutes","description": "Not just Rothschild Boulevard! Neve Tzedek has so much to see. Grab your friends or go alone, you will enjoy this trip!", "mainimg": "../img/icon.png", "stops": [{"name": "Firt stop", "description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry`s standard dummy text ever since the 1500s.", "address": "https://maps.app.goo.gl/CuhL3f7qSvV9ktRa6?g_st=ic","time": "6 min"},{"name": "The Nahum Gutman Museum","description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry`s standard dummy text ever since the 1500s.","address": "https://maps.app.goo.gl/zj9SqH5LQTupBi3k7?g_st=ic","time": "14 min"},{"name": "Rokach House Museum", "description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry`s standard dummy text ever since the 1500s.", "address": "https://maps.app.goo.gl/9bUf6sf42ovAbkyB7?g_st=ic","time": "3 min"}, {"name": "Eden Cinema","description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry`s standard dummy text ever since the 1500s.", "address": "https://maps.app.goo.gl/o4BocGC5gCrcVuXV6?g_st=ic","time": "2 min"}, {"name": "Suzanne Dellal","description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry`s standard dummy text ever since the 1500s.","address": "https://maps.google.com?q=Suzanne%20Dellal%20Centre%20for%20Dance%20and%20Theatre,%20Yehieli%20St%205,%20Tel%20Aviv-Yafo,%206514946&ftid=0x151d4c99ebae201b:0xe81a0d69da042249&hl=en-IL&gl=il&entry=gps&lucs=,47071704,47069508&g_st=ic","time": "6 min"}], "eat": {"name":"Gemma", "address": "https://maps.app.goo.gl/BjkoozRznERpR2jM8?g_st=ic", "img": "https://lh3.googleusercontent.com/p/AF1QipOo_ddmwRMA7EsujBhWnBlFf_OsPFkWppNg92Sy=s1360-w1360-h1020"}},
+
+{"tourname": "7 point on Rothschild Boulevard","time": "2 hours 08 minutes","description": "So many placec you can see on Rothshild, you`ve never seen before. Even if you see, you don`t now this little things. Give it a shot!", "mainimg": "../img/icon.png", "stops": [{"name": "Firt stop", "description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry`s standard dummy text ever since the 1500s.", "address": "https://maps.app.goo.gl/CuhL3f7qSvV9ktRa6?g_st=ic","time": "6 min"},{"name": "Independance Hall","description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry`s standard dummy text ever since the 1500s.","address": "https://maps.app.goo.gl/zj9SqH5LQTupBi3k7?g_st=ic","time": "14 min"},{"name": "Engel House", "description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry`s standard dummy text ever since the 1500s.", "address": "https://maps.app.goo.gl/9bUf6sf42ovAbkyB7?g_st=ic","time": "3 min"}, {"name": "Habima Squere","description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry`s standard dummy text ever since the 1500s.", "address": "https://maps.app.goo.gl/o4BocGC5gCrcVuXV6?g_st=ic","time": "2 min"}, {"name": "Finantial center","description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry`s standard dummy text ever since the 1500s.","address": "https://maps.google.com?q=Suzanne%20Dellal%20Centre%20for%20Dance%20and%20Theatre,%20Yehieli%20St%205,%20Tel%20Aviv-Yafo,%206514946&ftid=0x151d4c99ebae201b:0xe81a0d69da042249&hl=en-IL&gl=il&entry=gps&lucs=,47071704,47069508&g_st=ic","time": "6 min"}], "eat": {"name":"Cicchetti", "address": "https://maps.app.goo.gl/BjkoozRznERpR2jM8?g_st=ic", "img": "https://lh3.googleusercontent.com/p/AF1QipPglpHSNVzie25Z50A6B6tOWggXNDTL5y8HJIm3=s1360-w1360-h1020"}}
+
+{"tourname": "King houses of King George st.","time": "1 hours 27 minutes","description": "King Geordge best guid of the historical places and famouse houses", "mainimg": "../img/icon.png", "stops": [{"name": "Firt stop", "description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry`s standard dummy text ever since the 1500s.", "address": "https://maps.app.goo.gl/CuhL3f7qSvV9ktRa6?g_st=ic","time": "6 min"},{"name": "Best Falafel of your life","description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry`s standard dummy text ever since the 1500s.","address": "https://maps.app.goo.gl/zj9SqH5LQTupBi3k7?g_st=ic","time": "14 min"},{"name": "Some interesting house House", "description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry`s standard dummy text ever since the 1500s.", "address": "https://maps.app.goo.gl/9bUf6sf42ovAbkyB7?g_st=ic","time": "3 min"}, {"name": "Shop","description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry`s standard dummy text ever since the 1500s.", "address": "https://maps.app.goo.gl/o4BocGC5gCrcVuXV6?g_st=ic","time": "2 min"}, {"name": "Finantial center","description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry`s standard dummy text ever since the 1500s.","address": "https://maps.google.com?q=Suzanne%20Dellal%20Centre%20for%20Dance%20and%20Theatre,%20Yehieli%20St%205,%20Tel%20Aviv-Yafo,%206514946&ftid=0x151d4c99ebae201b:0xe81a0d69da042249&hl=en-IL&gl=il&entry=gps&lucs=,47071704,47069508&g_st=ic","time": "6 min"}], "eat": {"name":"Cicchetti", "address": "https://maps.app.goo.gl/BjkoozRznERpR2jM8?g_st=ic", "img": "https://lh3.googleusercontent.com/p/AF1QipPglpHSNVzie25Z50A6B6tOWggXNDTL5y8HJIm3=s1360-w1360-h1020"}}
+
+
+
+
