@@ -4,7 +4,7 @@ import axios from "axios";
 
 const UserPage = (params) => {
     const {id} = useParams();
-    const [favorites, serFav] = useState([]);
+    const [favorites, setFav] = useState([]);
 
     useEffect(()=>{
         getfav()
@@ -13,11 +13,20 @@ const UserPage = (params) => {
     const getfav = async () => {
         try {
             const response = await axios.get(`http://localhost:3001/users/favorites/${id}`)
-            serFav(response.data)
+            setFav(response.data)
         }catch (e) {
 
         }
     };
+
+    const delFav = async (tourid) => {
+        try {
+            const response = await axios.delete(`http://localhost:3001/users/favorites/${id}&${tourid}`)
+            getfav()
+        }catch (e) {
+            console.log(e)
+        }
+    }
     
     return (
         <>
@@ -29,6 +38,7 @@ const UserPage = (params) => {
                     <p>{data.tourname}</p>
                     <p>{data.time}</p>
                     <Link to={`/tours/${item.tourid}`}>Go to the Tour</Link>
+                    <button onClick={()=>delFav(item.tourid)}>Del from Fav</button>
                 </div>
             })
         }

@@ -5,9 +5,17 @@ const LoginReg = (props) => {
     const title = props.title;
 
     if (title ==='Log In'){
-        return <Login/>
+        return (
+        <div className='container'>
+        <Login/>
+        </div>
+        )
     } else {
-        return <SignUp/>
+        return (
+        <div className='container'>
+        <SignUp/>
+        </div>
+        )
     }
 }
 

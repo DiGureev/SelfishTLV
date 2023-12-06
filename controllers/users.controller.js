@@ -1,4 +1,4 @@
-import { register, login, getusername, addFavorite, getFavorite } from "../models/users.model.js";
+import { register, login, getusername, addFavorite, getFavorite, deleteFavorite } from "../models/users.model.js";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
@@ -25,7 +25,6 @@ export const _login = async (req, res) => {
       const { email, password } = req.body;
   
       const row = await login(email.toLowerCase());
-      //here should be a userID in the row we could check in the token if the token belong to this user
       
       if (row.length === 0)
         return res.status(404).json({ msg: "Email not found, please Sign Up" });
@@ -40,15 +39,15 @@ export const _login = async (req, res) => {
       const secret = process.env.ACCESS_TOKEN_SECRET
 
       const accesstoken = jwt.sign({ userid, useremail }, secret, {
-            expiresIn: "1d",
+            expiresIn: "60s",
       });
       
-        res.cookie("token", accesstoken, {
-            httpOnly: true,
-            maxAge: 60 * 1000,
-        });
+      res.cookie('accesstoken', accesstoken, {
+        httpOnly:true,
+        maxAge: 60 * 1000
+      })
 
-        res.json({ accesstoken,  userid, username});
+      res.json({ accesstoken,  userid, username});
         } catch (e) {
           console.log(e);
           res.status(404).json({ msg: "Something went wrong with token" });
@@ -91,6 +90,20 @@ export const _getFavorite = async (req,res) => {
   }catch(e){
       console.log(e)
       res.status(404).json({ msg: "Can't get favorites" });
+  }
+
+}
+
+export const _deleteFavorite = async (req,res) => {
+  const {userid, tourid} = req.params
+  console.log(userid)
+  console.log(tourid)
+  try{
+      const row = await deleteFavorite(userid, tourid)
+      res.sendStatus(200)
+  }catch(e){
+      console.log(e)
+      res.status(404).json({ msg: "Can't delete favorites" });
   }
 
 }
