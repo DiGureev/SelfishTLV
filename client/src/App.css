@@ -107,3 +107,41 @@ h1 {
   width: 80%;
   margin: auto;
 }
+
+.infoCard {
+  width: 20%;
+  text-align: center;
+  padding: 10px;
+  background-color: white;
+  border-radius: 10px;
+  margin-right: 10px;
+  border: 1px solid #2F276A;
+  height: fit-content;
+}
+
+.infoCard p {
+  font-size: 10px;
+}
+
+.infoCard a {
+  color: #2F276A;
+}
+
+.infoCard h5 {
+  font-size: 12px;
+}
+
+.hungryCard {
+  background-color: #E57FF0;
+  color: white;
+  padding: 10px 20px;
+  border: 1px solid white;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.map-container {
+  width: 100%;
+  height: 300px;
+  margin-bottom: 50px;
+}

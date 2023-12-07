@@ -1,5 +1,5 @@
 import express from "express";
-import { _register, _login, _getusername, _addFavorite, _getFavorite, _deleteFavorite } from "../controllers/users.controller.js";
+import { _register, _login, _addFavorite, _getFavorite, _deleteFavorite } from "../controllers/users.controller.js";
 import { token } from "../middleware/accesstoken.js";
 
 const userRouter = express.Router();

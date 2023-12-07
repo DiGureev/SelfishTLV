@@ -1,4 +1,4 @@
-import {gettour, getAllTours,updateLikes,getLikes} from "../models/tours.model.js";
+import {gettour, getAllTours,updateLikes,getLikes, getMainImg} from "../models/tours.model.js";
 
 export const _gettour = async (req,res) => {
     const id = req.params.id
@@ -44,6 +44,20 @@ export const _getLikes = async (req,res) => {
     console.log(tourid)
     try{
         const row = await getLikes(tourid)
+        res.json(row)
+        
+    }catch(e){
+        console.log(e)
+        res.status(404).json({ msg: "Something went wrong with getting likes" });
+    }
+
+}
+
+export const _getMainImg = async (req,res) => {
+    const tourid = req.params.id
+    console.log(tourid)
+    try{
+        const row = await getMainImg(tourid)
         res.json(row)
         
     }catch(e){

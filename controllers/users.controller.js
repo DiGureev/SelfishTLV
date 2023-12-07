@@ -1,4 +1,4 @@
-import { register, login, getusername, addFavorite, getFavorite, deleteFavorite } from "../models/users.model.js";
+import { register, login, addFavorite, getFavorite, deleteFavorite } from "../models/users.model.js";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
@@ -54,17 +54,17 @@ export const _login = async (req, res) => {
         }
 };
 
-export const _getusername = async (req,res) => {
-    const userID = req.params.id
-    try{
-        const row = await getusername(userID)
-        res.json(row)
-    }catch(e){
-        console.log(e)
-        res.status(404).json({ msg: "Something went wrong with getting username" });
-    }
+// export const _getusername = async (req,res) => {
+//     const userID = req.params.id
+//     try{
+//         const row = await getusername(userID)
+//         res.json(row)
+//     }catch(e){
+//         console.log(e)
+//         res.status(404).json({ msg: "Something went wrong with getting username" });
+//     }
 
-}
+// }
 
 
 export const _addFavorite = async (req,res) => {
