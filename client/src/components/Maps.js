@@ -24,7 +24,7 @@ const Maps = (props) => {
 
 
     const {isLoaded} = useLoadScript({
-        googleMapsApiKey: 'AIzaSyDHscou3ulhuumOBJHMKEjeSmyNsyaCoSw',
+        googleMapsApiKey: '',
         libraries: ['places']
     })
 
