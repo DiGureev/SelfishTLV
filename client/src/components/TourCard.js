@@ -40,8 +40,8 @@ const TourCard = (props)=>{
                             <p>{info.time}</p>
                             <p>{info.description}</p>
                             <div style={{display:'flex', justifyContent: 'right'}}>
-                                <p style={{marginRight:'10px'}}><FontAwesomeIcon icon={faHeart}/> {item.likes}</p>
-                                <p><FontAwesomeIcon icon={faBookmark} onClick={()=>addtoFav(item.tourid)}/></p>
+                                <div style={{marginRight:'10px'}}><FontAwesomeIcon icon={faHeart}/> {item.likes}</div>
+                                <div onClick={()=> addtoFav(item.tourid)}><FontAwesomeIcon icon={faBookmark} /> Add to Fav</div>
                                 </div>
                             <Link to={`/tours/${item.tourid}`}>Go to the Tour</Link>
                             {/* <button onClick={()=>addtoFav(item.tourid)}>Add to Fav</button> */}

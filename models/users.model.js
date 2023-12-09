@@ -8,9 +8,9 @@ export const login = (email) => {
     return db('users').select('userid', 'username', 'email', 'password').where({email});
 };
 
-export const getusername = (userid => {
-    return db('users').select('username').where({userid});
-})
+// export const getusername = (userid => {
+//     return db('users').select('username').where({userid});
+// })
 
 export const addFavorite = (userid, tourid) => {
     return db('favorites').insert({userid, tourid});

@@ -107,3 +107,188 @@ h1 {
   width: 80%;
   margin: auto;
 }
+
+.footerLinks a {
+  margin-left: 0;
+  text-decoration: none;
+  color: white;
+}
+
+.infoCard {
+  width: 20%;
+  text-align: center;
+  padding: 10px;
+  background-color: white;
+  border-radius: 10px;
+  margin-right: 10px;
+  border: 1px solid #2F276A;
+  height: fit-content;
+}
+
+.infoCard p {
+  font-size: 10px;
+}
+
+.infoCard a {
+  color: #2F276A;
+}
+
+.infoCard h5 {
+  font-size: 12px;
+}
+
+.hungryCard {
+  background-color: #E57FF0;
+  color: white;
+  padding: 10px 20px;
+  border: 1px solid white;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.map-container {
+  width: 100%;
+  height: 300px;
+  margin-bottom: 50px;
+}
+
+.regDivs div {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
+  justify-content:center;
+  align-items: center;
+  height: 50vh;
+  color: white;
+
+}
+
+.regDivs button {
+  width: 100px;
+  padding: 10px 10px;
+  margin-top: 10px;
+  font-weight: 700;
+  font-size: 18px;
+  border: 1px solid white;
+  border-radius: 3px;
+}
+
+.regDivs input {
+  width: 60%;
+  margin-bottom: 10px;
+  height: 30px;
+  border-radius: 3px;
+  border: 1px solid #2F276A;
+  padding: 2px 5px;
+}
+
+.regDivs p{
+  font-size: 25px;
+  margin: 10px;
+}
+
+.loginDiv {
+  background-color: #FED600;
+}
+
+.loginDiv button{
+  background-color: #E57FF0;
+  color: white;
+}
+
+.singupDiv {
+  background-color: #E57FF0;
+}
+
+.singupDiv button{
+  background-color:#FED600 ;
+  color:#7E6EEF;
+}
+
+.eventsBlock {
+ display: grid; 
+ grid-template-columns: 1fr 1fr 1fr;
+ flex-wrap: wrap;
+ margin-bottom: 50px;
+}
+
+.eventsBlock a {
+  margin-left: 10px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.eventCardsClass {
+margin: 10px;
+max-width: 260px;
+background-color: white;
+padding: 10px 10px;
+border-radius: 10px;
+}
+
+.eventCardsClass h4, p {
+  margin: 10px;
+}
+
+.eventCardsClass button {
+background-color: black;
+color: white;
+font-size: 15px;
+padding: 5px 10px;
+border: 0;
+border-radius: 3px;
+}
+
+.eventSelect {
+  margin: 20px;
+  text-align: center;
+}
+
+.eventSelect select {
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  font-size: 15px;font-weight: 700;
+}
+
+.SM img {
+  margin-right: 10px;
+  margin-top: 20px;
+  width: 30%;
+}
+
+.favContainer {
+  margin-top: -50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 10px;
+
+}
+
+.favCard {
+  background-color: white;
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 150px;
+  border: 0;
+  border-radius: 10px;
+}
+
+.favCard a {
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.favCard button {
+  font-size: 10px;
+  background-color: #7E6EEF;
+  color: white;
+  border: 0;
+  padding: 5px 5px;
+  border-radius: 3px;
+}

@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import { AppContext } from '../App.js';
 import { useNavigate } from 'react-router-dom';
 import logo from '../img/logo.png'
+import axios from 'axios';
 
 const Nav = (props) => {
     const {userID,setId, username,setName} = useContext(AppContext)
@@ -20,7 +21,12 @@ const Nav = (props) => {
         }
     }, [userID])
 
-    const logout = () => {
+    const logout = async () => {
+        try{
+            const response = await axios.post("http://localhost:3001/users/logout")
+        } catch (e) {
+            console.log(e)
+        }
         setId('')
         setName('')
         setTimeout(()=>{
@@ -34,7 +40,7 @@ const Nav = (props) => {
             <div className='links'>
             <Link to='/tours'>Self-tours</Link>
             <Link to='/'>Hungry-guides</Link>
-            <Link to='/'>Free events</Link>
+            <Link to='/events'>Free events</Link>
             </div>
             <div className='LogReg'>
             <Link to='/login' style={{display: displayLog}}>Log In</Link>

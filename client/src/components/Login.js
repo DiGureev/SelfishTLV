@@ -35,19 +35,21 @@ const Login = () => {
     }
 
     return (
-        <div style={{display: 'flex', width:'50vw', margin: 'auto'}}>
-            <div style={{width: '50%', display: 'flex', flexDirection:'column'}}>
+        <div className="container" style={{paddingTop:'100px'}}>
+        <div style={{display: 'flex', width:'50vw', margin:'auto'}} className="regDivs">
+            <div className="loginDiv">
                 <h2>Log In</h2>
                 <input type="email" placeholder="Email" onChange={(e)=>setEmail(e.target.value)}/>
                 <input type="password" placeholder="Password" onChange={(e)=>setPass(e.target.value)}/>
                 <button onClick={logging}>Log In</button>
                 <p>{msg}</p>
             </div>
-            <div style={{width: '50%'}}>
-                <h2>Please. Log In</h2>
+            <div className="singupDiv">
+                <h2>Please, Log In</h2>
                 <p>or</p>
                 <Link to='/signup'><button>Sign Up</button></Link>
             </div>
+        </div>
         </div>
     )
 }

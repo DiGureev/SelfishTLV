@@ -1,4 +1,4 @@
-import { register, login, getusername, addFavorite, getFavorite, deleteFavorite } from "../models/users.model.js";
+import { register, login, addFavorite, getFavorite, deleteFavorite } from "../models/users.model.js";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
@@ -39,13 +39,19 @@ export const _login = async (req, res) => {
       const secret = process.env.ACCESS_TOKEN_SECRET
 
       const accesstoken = jwt.sign({ userid, useremail }, secret, {
-            expiresIn: "60s",
+            expiresIn: "1h",
+      });
+
+      const refreshToken = jwt.sign({ userid, useremail }, secret, {
+        expiresIn: '7d',
       });
       
-      res.cookie('accesstoken', accesstoken, {
+      res.cookie('token', accesstoken, {
         httpOnly:true,
-        maxAge: 60 * 1000
+        maxAge: 60 * 1000,
       })
+
+      res.cookie('refreshToken', refreshToken, { httpOnly: true });
 
       res.json({ accesstoken,  userid, username});
         } catch (e) {
@@ -54,17 +60,17 @@ export const _login = async (req, res) => {
         }
 };
 
-export const _getusername = async (req,res) => {
-    const userID = req.params.id
-    try{
-        const row = await getusername(userID)
-        res.json(row)
-    }catch(e){
-        console.log(e)
-        res.status(404).json({ msg: "Something went wrong with getting username" });
-    }
+// export const _getusername = async (req,res) => {
+//     const userID = req.params.id
+//     try{
+//         const row = await getusername(userID)
+//         res.json(row)
+//     }catch(e){
+//         console.log(e)
+//         res.status(404).json({ msg: "Something went wrong with getting username" });
+//     }
 
-}
+// }
 
 
 export const _addFavorite = async (req,res) => {

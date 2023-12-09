@@ -12,6 +12,10 @@ export const getLikes = (tourid) => {
     return db('tours').select('likes').where({tourid});
 }
 
+export const getMainImg = (tourid) => {
+    return db('tours').select('mainimg').where({tourid});
+}
+
 
 export const updateLikes = (tourid, likes) => {
     return db('tours').update({likes}, ['likes']).where({tourid});
