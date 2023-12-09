@@ -109,6 +109,7 @@ const Tour = (params)=>{
         </div>
 
         <div className="tourInfo" style={{width: '80%'}}>
+        <Maps latlng={arr}/>
         <img src={mainimg} style={{width: '100%'}}></img>        
         <p>{data.description}</p>
      
@@ -127,7 +128,7 @@ const Tour = (params)=>{
         <img src={rest.img} style={{width: '100%'}}></img>
         </div>
 
-        <Maps latlng={arr}/>
+        {/* <Maps latlng={arr}/> */}
 
         </div>
         </div>

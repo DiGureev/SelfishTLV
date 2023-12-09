@@ -145,3 +145,57 @@ h1 {
   height: 300px;
   margin-bottom: 50px;
 }
+
+.regDivs div {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
+  justify-content:center;
+  align-items: center;
+  height: 50vh;
+  color: white;
+
+}
+
+.regDivs button {
+  width: 100px;
+  padding: 10px 10px;
+  margin-top: 10px;
+  font-weight: 700;
+  font-size: 18px;
+  border: 1px solid white;
+  border-radius: 3px;
+}
+
+.regDivs input {
+  width: 60%;
+  margin-bottom: 10px;
+  height: 30px;
+  border-radius: 3px;
+  border: 1px solid #2F276A;
+  padding: 2px 5px;
+}
+
+.regDivs p{
+  font-size: 25px;
+  margin: 10px;
+}
+
+.loginDiv {
+  background-color: #FED600;
+}
+
+.loginDiv button{
+  background-color: #E57FF0;
+  color: white;
+}
+
+.singupDiv {
+  background-color: #E57FF0;
+}
+
+.singupDiv button{
+  background-color:#FED600 ;
+  color:#7E6EEF;
+}

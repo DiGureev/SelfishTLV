@@ -24,13 +24,14 @@ const SignUp = () => {
     }
 
     return (
-        <div style={{display: 'flex', width:'50vw', margin: 'auto'}}>
-            <div style={{width: '50%'}}>
+        <div className="container" style={{paddingTop:'100px'}}>
+        <div style={{display: 'flex', width:'50vw', margin:'auto'}} className="regDivs">
+            <div className="singupDiv">
                 <h2>Create Account</h2>
                 <p>or</p>
                 <Link to='/login'><button>Log In</button></Link>
             </div>
-            <div style={{width: '50%', display: 'flex', flexDirection:'column'}}>
+            <div className="loginDiv">
                 <h2>Create Account</h2>
                 <input type="text" placeholder="Username" onChange={(e)=>setUsername(e.target.value)}/>
                 <input type="email" placeholder="Email" onChange={(e)=>setEmail(e.target.value)}/>
@@ -38,6 +39,7 @@ const SignUp = () => {
                 <button onClick={handlesignup}>Sign Up</button>
                 <p>{msg}</p>
             </div>
+        </div>
         </div>
     )
 }

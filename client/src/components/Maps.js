@@ -1,4 +1,4 @@
-import { useState,useMemo, useCallback, useRef, useEffect } from 'react';
+import { useState,useMemo, useCallback, useRef } from 'react';
 
 import {
     useLoadScript,
@@ -7,15 +7,15 @@ import {
     DirectionsRenderer,
 } from '@react-google-maps/api'
 
-const google = window.google
+const google = window.google = window.google ? window.google : {}
 
 const Maps = (props) => {
     const latlng = props.latlng
     console.log(latlng)//doesnt work
-    // const [latlng, setLL] = useState([]) //still can't see the markers
     const mapRef = useRef()
     const [directions, setDir] = useState();
     const center = useMemo(()=> ({lat: 32.0853, lng: 34.7818}), []);
+    // const latlng = useMemo(()=> (props.latlng), []);
     const options = useMemo(()=> ({
         mapId: 'd46503c02ab29bed',
         disableDefaultUI: true,
@@ -24,13 +24,14 @@ const Maps = (props) => {
 
 
     const {isLoaded} = useLoadScript({
-        googleMapsApiKey: '',
+        googleMapsApiKey: process.env.REACT_APP_API_KEY,
         libraries: ['places']
     })
 
     const onLoad = useCallback(map => mapRef.current = map, [])
 
     const fetchDirection = (item1, item2, index)=>{
+        setDir({})
         console.log(item1)
         console.log(item2)
         if (!item2) {
@@ -45,6 +46,7 @@ const Maps = (props) => {
             travelMode: google.maps.TravelMode.WALKING
         }, (result, status) => {
             if (status === 'OK' && result){
+                console.log(result)
                 setDir(result);
             }
         })
