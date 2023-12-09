@@ -32,7 +32,7 @@ const AllTours = (props) => {
         </div>
         <div>
             {
-                data.map(item => <TourCard element={item}/>)
+                data.map((item, index) => <TourCard  key={index} element={item}/>)
             }
         </div>
         </div>

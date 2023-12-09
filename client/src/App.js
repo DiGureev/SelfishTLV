@@ -10,6 +10,7 @@ import TourPage from './components/TourPage.js';
 import AllTours from './components/AllTours.js';
 import Main from './components/Main.js';
 import Footer from './components/Footer.js'
+import EventsPage from './components/EventsPage.js'
 
 export const AppContext = createContext()
 
@@ -30,6 +31,7 @@ function App() {
         <Route path='/users/:id' element={<Auth><UserPage/></Auth>}/>
         <Route path='/tours' element={<AllTours/>}/>
         <Route path='/tours/:id' element={<TourPage/>}/>
+        <Route path='/events' element={<EventsPage/>}/>
       </Routes>  
       </div> 
       <Footer/> 

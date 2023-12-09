@@ -5,6 +5,7 @@ import img from "../img/main.png"
 import icon from "../img/icon.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
+import EventBlock from './EventBlock.js'
 
 
 const Main = (props) => {
@@ -50,6 +51,7 @@ const Main = (props) => {
                 </div>
             </div>
             </div>
+        <EventBlock/>
         </div>
         </>
     )
