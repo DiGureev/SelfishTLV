@@ -51,7 +51,11 @@ export const _login = async (req, res) => {
         maxAge: 60 * 1000,
       })
 
-      res.cookie('refreshToken', refreshToken, { httpOnly: true });
+      res.cookie('refreshToken', refreshToken, { httpOnly: true , maxAge: 60 * 1000* 60 * 24 * 7,});
+
+      // res.cookie('test', 'test', {maxAge: 60*1000})
+
+      console.log('cookies=>',req.cookies)
 
       res.json({ accesstoken,  userid, username});
         } catch (e) {
@@ -77,7 +81,7 @@ export const _addFavorite = async (req,res) => {
   const {userid, tourid} = req.body
   try{
       const row = await addFavorite(userid, tourid)
-      res.sendStatus(200)
+      res.status(200).json(row)
 
   }catch(e){
       console.log(e)

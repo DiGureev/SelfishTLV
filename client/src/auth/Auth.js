@@ -18,7 +18,8 @@ const Auth = (props) => {
 
     const verify = async () => {
         try {
-            const response = await axios.post("http://localhost:3001/users/verify", {token});
+            axios.defaults.headers.common['Authorization'] = token;
+            const response = await axios.post("http://localhost:3001/users/verify", {headers: {'x-access-token': token}});
             if (response.status === 201) setRedirect(true)
 
         }catch (e){
@@ -31,7 +32,7 @@ const Auth = (props) => {
         }
     };
 
-    return redirect ? props.children : <h2>You are not authorized</h2>;
+    return redirect ? props.children : <div className="container"><h2>You are not authorized</h2></div>;
 
 }
 

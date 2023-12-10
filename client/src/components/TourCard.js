@@ -10,7 +10,8 @@ const TourCard = (props)=>{
     const {userID} = useContext(AppContext)
     const item = props.element
     const info = JSON.parse(item.tourinfo)
-    const [visability, setVis] = useState('hidden')
+    const [visibility, setVis] = useState('hidden')
+    const [visibilityAdded, setVisAdded] = useState('hidden')
     const navigate = useNavigate()
 
     const addtoFav = async(id) => {
@@ -19,10 +20,16 @@ const TourCard = (props)=>{
         } else {
             try {
             const response = await axios.post("http://localhost:3001/users/favorites", {userid: userID, tourid: id})
-           if (response.status===200){
+            
+            if (response.data[0] == undefined){
             setVis('')
             setTimeout(()=>{
                 setVis('hidden')
+            },1000)
+           } else {
+            setVisAdded('')
+            setTimeout(()=>{
+                setVisAdded('hidden')
             },1000)
            }
 
@@ -42,10 +49,12 @@ const TourCard = (props)=>{
                             <div style={{display:'flex', justifyContent: 'right'}}>
                                 <div style={{marginRight:'10px'}}><FontAwesomeIcon icon={faHeart}/> {item.likes}</div>
                                 <div onClick={()=> addtoFav(item.tourid)}><FontAwesomeIcon icon={faBookmark} /> Add to Fav</div>
-                                </div>
+                            </div>
                             <Link to={`/tours/${item.tourid}`}>Go to the Tour</Link>
-                            {/* <button onClick={()=>addtoFav(item.tourid)}>Add to Fav</button> */}
-                            <p style={{visibility: visability}}>Added</p>
+                            <div style={{display:'block', textAlign: 'right'}}>
+                            <p style={{visibility: visibility}}>Added</p>
+                            <p style={{visibility: visibilityAdded}}>Already Favorite</p>
+                            </div>
                             </div>
              </div>
     )

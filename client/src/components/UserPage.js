@@ -8,22 +8,21 @@ const UserPage = (props) => {
     const {id} = useParams();
     const [favorites, setFav] = useState([]);
     const {username} = useContext(AppContext)
-    const [display, setDisp] = useState(false);
+    const [display, setDisp] = useState('none');
 
     useEffect(()=>{
         getfav()
-        if (favorites.length === 0) {
-            setDisp(true)
-        } else {
-            setDisp(false)
-        }
     }, []);
     
     const getfav = async () => {
         try {
             const response = await axios.get(`http://localhost:3001/users/favorites/${id}`)
             setFav(response.data)
-            console.log(favorites.length)
+            if (response.data.length === 0) {
+                setDisp('')
+            } else {
+                setDisp('none')
+            }
         }catch (e) {
 
         }
@@ -52,7 +51,7 @@ const UserPage = (props) => {
             
         <div className="favContainer">
         {
-            favorites.map((item,index)=>{
+           favorites && favorites.map((item,index)=>{
                 let data = JSON.parse(item.tourinfo)
                return  <div key={index} className="favCard">
                     <h4 style={{margin:'0px'}}>{data.tourname}</h4>
@@ -62,8 +61,9 @@ const UserPage = (props) => {
                 </div>
             })
         }
+        
         </div>
-
+        <div style={{display: display, fontSize:"30px", marginTop:'50px', fontWeight:'700', width:'500px', textAlign:'center'}}>You will see your favorite tours here</div>
         </div>
     )
 }

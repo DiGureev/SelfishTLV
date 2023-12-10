@@ -34,6 +34,7 @@ export const _tomorrowEvents = async (req,res) => {
 }
 export const _weekEvents = async (req,res) => {
     const date = new Date()
+    date.setDate(date.getDate()+1)
     const weekDays = [];     
     weekDays.push(new Date(date.setDate(date.getDate())).toISOString().slice(0, 10))
     for (let i = 0; i <= 6; i++) {

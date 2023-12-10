@@ -8,14 +8,17 @@ import Maps from "./Maps.js";
 
 const Tour = (params)=>{
     const {userID} = useContext(AppContext)
+    console.log(userID)
     const {id} = useParams()
+    console.log(id)
     const [data, setData] = useState([])
     const [stops, setStops] = useState([])
     const [rest, setRest] = useState({})
     const [likes, setLikes] = useState(null)
     const [mainimg, setImg] = useState('')
     const [liked, setLiked] = useState(false)
-    const [visability, setVis] = useState('hidden')
+    const [visibility, setVis] = useState('hidden')
+    const [visibilityAdded, setVisAdded] = useState('hidden')
     const navigate = useNavigate()
 
     let arr = []
@@ -57,16 +60,22 @@ const Tour = (params)=>{
         
     }
 
-    const addtoFav = async(id) => {
+    const addtoFav = async() => {
         if (userID === '') {
             navigate('/login')
         } else {
             try {
             const response = await axios.post("http://localhost:3001/users/favorites", {userid: userID, tourid: id})
-           if (response.status===200){
+            
+            if (response.data[0] == undefined){
             setVis('')
             setTimeout(()=>{
                 setVis('hidden')
+            },1000)
+           } else {
+            setVisAdded('')
+            setTimeout(()=>{
+                setVisAdded('hidden')
             },1000)
            }
 
@@ -76,11 +85,15 @@ const Tour = (params)=>{
         }
     }
 
+
     return (
         <div className="container">
             <div style={{display:'flex', justifyContent:'space-between', marginTop:'30px', height: '30px'}}>
-                <div onClick={()=>addtoFav(data.tourid)} style={{cursor:'pointer'}}><FontAwesomeIcon icon={faBookmark}/><span style={{color:'#FF93ED', fontWeight:'500', marginLeft:'10px'}}>Add to favorite</span>
-                    <p style={{visibility: visability}}>Added</p></div>
+                <div onClick={()=>addtoFav(data.tourid)} style={{cursor:'pointer'}}>
+                <FontAwesomeIcon icon={faBookmark}/><span style={{color:'#FF93ED', fontWeight:'500', marginLeft:'10px'}}>Add to favorite</span>
+                <span style={{visibility: visibility}}>Added</span>
+                <span style={{visibility: visibilityAdded}}>Already Favorite</span> 
+                </div>     
                <div><FontAwesomeIcon icon={faHeart} onClick={updateLikes}/> {likes}</div> 
             </div>
 
@@ -133,6 +146,8 @@ const Tour = (params)=>{
         </div>
         </div>
         </div>
+   
+      
         
     )
 }
