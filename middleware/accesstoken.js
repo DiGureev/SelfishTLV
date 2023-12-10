@@ -3,12 +3,14 @@ import dotenv from 'dotenv';
 dotenv.config()
 
 export const token = async (req, res, next) => {
-    console.log(req.cookies.token)
+  console.log(req.cookies)
+  console.log(req.headers)
+  console.log(req.cookies.token)
     console.log(req.cookies.refreshToken);
-    // let token = req.cookies.token || req.headers['x-access-token']
+    let token = req.cookies.token || req.headers['authorization']
     //let refreshToken = req.cookies.refreshToken
 
-    let token = req.body.token; // Works till refresh the page
+    // let token = req.body.token; // Works till refresh the page
     
     // let accesstoken = req.cookies.token || req.headers['x-access-token']
 

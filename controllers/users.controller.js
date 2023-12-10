@@ -51,7 +51,11 @@ export const _login = async (req, res) => {
         maxAge: 60 * 1000,
       })
 
-      res.cookie('refreshToken', refreshToken, { httpOnly: true });
+      res.cookie('refreshToken', refreshToken, { httpOnly: true , maxAge: 60 * 1000* 60 * 24 * 7,});
+
+      // res.cookie('test', 'test', {maxAge: 60*1000})
+
+      console.log('cookies=>',req.cookies)
 
       res.json({ accesstoken,  userid, username});
         } catch (e) {
