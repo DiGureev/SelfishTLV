@@ -77,7 +77,7 @@ export const _addFavorite = async (req,res) => {
   const {userid, tourid} = req.body
   try{
       const row = await addFavorite(userid, tourid)
-      res.sendStatus(200)
+      res.status(200).json(row)
 
   }catch(e){
       console.log(e)

@@ -31,7 +31,7 @@ const Auth = (props) => {
         }
     };
 
-    return redirect ? props.children : <h2>You are not authorized</h2>;
+    return redirect ? props.children : <div className="container"><h2>You are not authorized</h2></div>;
 
 }
 

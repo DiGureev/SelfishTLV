@@ -45,13 +45,14 @@ const Main = (props) => {
                 <div className='icon'><img src={icon}/></div>
                 <div>
                     <h3>{info.tourname}</h3>
-                    <p>{info.description}</p>
+                    <p style={{marginLeft:'0px'}}>{info.description}</p>
                     <Link to={`/tours/${tour.tourid}`}>Go to the Tour</Link>
                     <p style={{textAlign:'right'}}><FontAwesomeIcon icon={faHeart}/> {like}</p>
                 </div>
             </div>
             </div>
         <EventBlock/>
+        <Link to={`/events`} >Go to all Events</Link>
         </div>
         </>
     )

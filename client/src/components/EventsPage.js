@@ -76,8 +76,8 @@ const EventsPage = (props)=>{
         </div>
         <div className='eventsBlock'>
         {
-                events.map( item => {
-                    return <EventsCard item={item}/>
+                events.map(( item, index) => {
+                    return <EventsCard key={index} item={item}/>
                 })
             }
         </div>

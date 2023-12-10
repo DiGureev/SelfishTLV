@@ -12,9 +12,15 @@ export const login = (email) => {
 //     return db('users').select('username').where({userid});
 // })
 
-export const addFavorite = (userid, tourid) => {
-    return db('favorites').insert({userid, tourid});
+export const addFavorite = async (userid, tourid) => {
+    const row = await db('favorites').select('userid', 'tourid').where({userid, tourid});
+    if (row.length === 0) {
+        return db('favorites').insert({userid, tourid});
+    }
+
+    return row
 };
+
 
 export const getFavorite = (userid) => {
     return db('favorites').innerJoin('tours', 'favorites.tourid','tours.tourid')
