@@ -24,7 +24,9 @@ const Main = (props) => {
             let arr = response.data;
             let tour = arr[Math.floor(Math.random()*arr.length)];
             let info = JSON.parse(tour.tourinfo)
-            setLike(tour.likes)
+
+            const likeResponse = await axios.get(`http://localhost:3001/likes/${tour.tourid}`)
+            setLike(likeResponse.data[0].count)
            
             setData(tour)
             setInfo(info)
@@ -35,7 +37,7 @@ const Main = (props) => {
     }
 
     if (info){
-         return (
+        return (
         <>
         <img src={img} className='backImg'/>
         <div className='container'>
@@ -51,11 +53,13 @@ const Main = (props) => {
                 </div>
             </div>
             </div>
-        <EventBlock/>
-        <Link to={`/events`} >Go to all Events</Link>
+            <EventBlock/>
+            <Link to={`/events`} >Go to all Events</Link>
         </div>
         </>
     )
+    } else {
+        return <div className='container'></div>
     }
 }
 

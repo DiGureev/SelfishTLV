@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import userRouter from './routes/users.route.js';
 import tourRouter from './routes/tours.route.js';
 import eventRouter from './routes/events.route.js'
+import likeRouter from './routes/likes.route.js'
 import cookieParser from 'cookie-parser';
 
 const app = express();
@@ -21,3 +22,4 @@ app.listen(process.env.PORT || 3001, () => {
 app.use("/users", userRouter)
 app.use("/tours", tourRouter)
 app.use("/events", eventRouter)
+app.use("/likes", likeRouter)

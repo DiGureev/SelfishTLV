@@ -1,43 +1,77 @@
 import jwt from 'jsonwebtoken';
+import {fetchRefresh} from '../models/users.model.js'
 import dotenv from 'dotenv';
+import bcrypt from 'bcrypt';
 dotenv.config()
 
 export const token = async (req, res, next) => {
-  console.log(req.cookies)
-  console.log(req.headers)
-  console.log(req.cookies.token)
-    console.log(req.cookies.refreshToken);
+
+    // get headers
     let token = req.cookies.token || req.headers['authorization']
-    //let refreshToken = req.cookies.refreshToken
+    const id = req.headers['id']
+    const refreshCheck = req.headers['refreshtoken']
 
-    // let token = req.body.token; // Works till refresh the page
-    
-    // let accesstoken = req.cookies.token || req.headers['x-access-token']
+    //fetch refresh token from the DB
+    const refresh = await fetchRefresh(id)
+    const refreshToken = refresh[0].refresh
+    const username = refresh[0].username
 
+    //if access token is empty
+    if(!token) {
+      //check if encrypt token matches with the real one
+      const match = bcrypt.compareSync(refreshToken + "", refreshCheck);
+      if (!match) return res.sendStatus(403)
 
-    if(!token) return res.status(401).json({msg:'No token'})
-
-    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {
-    if(err) {
-      if (!refreshToken) {
-        return res.status(403).json({ message: 'Token verification failed' });
-      }
-
-      jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, decoded) => {
+      //verify refresh token
+      jwt.verify(refreshToken, process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {
         if (err) {
           return res.status(403).json({ message: 'Refresh token verification failed' });
         }
-
-        const newAccessToken = jwt.sign({ id: user.id, username: user.username }, secretKey, {
+        //sign a new access token
+        const newAccessToken = jwt.sign({ id, username}, process.env.ACCESS_TOKEN_SECRET, {
           expiresIn: '1h', 
         });
 
-        res.cookie('token', newAccessToken, { httpOnly: true });
+        //put new information to the request body
+        req.body.info = {token: newAccessToken, id, username}
 
         next();
-      });
+      })
+
+    //check if token is not empty but expired  
     } else {
-      next();
-    }
-  })
-}
+      //verify access token
+      jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {
+      if(err) {
+
+        //if not verifyed - check the refresh token match
+        const match = bcrypt.compareSync(refreshToken + "", refreshCheck);
+        if (!match) return res.sendStatus(403)
+
+        //verify refresh token
+        jwt.verify(refreshToken, process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {
+
+          if (err) {
+            return res.status(403).json({ message: 'Refresh token verification failed' });
+          } else {
+
+            // sign new token
+            const newAccessToken = jwt.sign({ id, username }, process.env.ACCESS_TOKEN_SECRET, {
+            expiresIn: '1h', 
+            });
+
+            //send new info to the request body
+            req.body.info = {token: newAccessToken, id, username}
+            next();
+          }
+        
+          });
+      } // if access token is ok - next
+        else {
+
+        next();
+      }
+    })
+  }
+   
+};

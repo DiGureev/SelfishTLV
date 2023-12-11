@@ -8,6 +8,15 @@ export const login = (email) => {
     return db('users').select('userid', 'username', 'email', 'password').where({email});
 };
 
+export const addToken = (token, userid) => {
+    return db('users').update({refresh: token}).where({userid});
+};
+
+export const fetchRefresh = (userid) => {
+    return db('users').select('userid','username','refresh').where({userid});
+};
+
+
 // export const getusername = (userid => {
 //     return db('users').select('username').where({userid});
 // })

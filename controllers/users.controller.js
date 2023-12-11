@@ -1,4 +1,4 @@
-import { register, login, addFavorite, getFavorite, deleteFavorite } from "../models/users.model.js";
+import { register, login, addFavorite, getFavorite, deleteFavorite, addToken } from "../models/users.model.js";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
@@ -20,24 +20,27 @@ export const _register = async (req, res) => {
     }
   };
 
+
 export const _login = async (req, res) => {
     try {
       const { email, password } = req.body;
-  
       const row = await login(email.toLowerCase());
       
       if (row.length === 0)
         return res.status(404).json({ msg: "Email not found, please Sign Up" });
-  
+      
+      //checking if the passwords match
       const match = bcrypt.compareSync(password + "", row[0].password);
       if (!match) return res.status(404).json({ msg: "Wrong password" });
-  
+
+      //get user info from the response
       const userid = row[0].userid;
       const username = row[0].username;
       const useremail = row[0].email;
 
       const secret = process.env.ACCESS_TOKEN_SECRET
 
+      //sign access token and refresh token
       const accesstoken = jwt.sign({ userid, useremail }, secret, {
             expiresIn: "1h",
       });
@@ -46,35 +49,26 @@ export const _login = async (req, res) => {
         expiresIn: '7d',
       });
       
-      res.cookie('token', accesstoken, {
-        httpOnly:true,
-        maxAge: 60 * 1000,
-      })
+      // res.cookie('token', accesstoken, {
+      //   httpOnly:true,
+      //   maxAge: 60 * 1000,
+      // })
 
-      res.cookie('refreshToken', refreshToken, { httpOnly: true , maxAge: 60 * 1000* 60 * 24 * 7,});
+      // res.cookie('refreshToken', refreshToken, { httpOnly: true , maxAge: 60 * 1000* 60 * 24 * 7,});
+      
+      //add refresh token to the DB
+      const ref = await addToken(refreshToken, userid)
 
-      // res.cookie('test', 'test', {maxAge: 60*1000})
+      //encrypt refresh token before sending to the client
+      const salt = bcrypt.genSaltSync(10);
+      const hashToken = bcrypt.hashSync(refreshToken + "", salt);
 
-      console.log('cookies=>',req.cookies)
-
-      res.json({ accesstoken,  userid, username});
+      res.json({ accesstoken, refreshToken: hashToken, userid, username});
         } catch (e) {
           console.log(e);
           res.status(404).json({ msg: "Something went wrong with token" });
         }
 };
-
-// export const _getusername = async (req,res) => {
-//     const userID = req.params.id
-//     try{
-//         const row = await getusername(userID)
-//         res.json(row)
-//     }catch(e){
-//         console.log(e)
-//         res.status(404).json({ msg: "Something went wrong with getting username" });
-//     }
-
-// }
 
 
 export const _addFavorite = async (req,res) => {
