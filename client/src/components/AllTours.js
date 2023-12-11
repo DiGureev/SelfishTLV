@@ -4,6 +4,7 @@ import TourCard from './TourCard.js';
 import backimg from "../img/selftoursbackimg.png"
 
 
+
 const AllTours = (props) => {
     const [data, setData] = useState([])
 
@@ -31,9 +32,11 @@ const AllTours = (props) => {
             <img src={backimg} style={{width:'50%'}}/>
         </div>
         <div>
+
             {
                 data.map((item, index) => <TourCard  key={index} element={item}/>)
             }
+
         </div>
         </div>
     )

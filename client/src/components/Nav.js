@@ -12,23 +12,38 @@ const Nav = (props) => {
     const navigate = useNavigate()
 
     useEffect(()=>{
-        if (userID === '') {
+        let refresh = localStorage.getItem('refresh')
+        let id = localStorage.getItem('userid')
+        let username = localStorage.getItem('username')
+        console.log(refresh)
+        console.log(id)
+        console.log(username)
+
+        if (refresh === 'null') {
+            console.log('I am here')
             setDisName('none')
             setDisLog('')
         } else {
             setDisName('')
             setDisLog('none')
+            setId(id)
+            setName(username)
         }
     }, [userID])
 
     const logout = async () => {
+        localStorage.setItem('refresh', null)
+        
         try{
             const response = await axios.post("http://localhost:3001/users/logout")
+            console.log('I am here')
+            setId('')
+            setName('')
+            setDisName('none')
+            setDisLog('')
         } catch (e) {
             console.log(e)
         }
-        setId('')
-        setName('')
         setTimeout(()=>{
             navigate('/')
         },500)

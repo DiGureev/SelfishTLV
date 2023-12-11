@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
-import { useState, createContext } from 'react';
+import { useState, createContext, useEffect } from 'react';
 import Auth from './auth/Auth.js'
 import LoginReg from './components/LoginReg.js'
 import Nav from './components/Nav.js'
@@ -12,14 +12,20 @@ import Main from './components/Main.js';
 import Footer from './components/Footer.js'
 import EventsPage from './components/EventsPage.js'
 
+
+
 export const AppContext = createContext()
 
 function App() {
-  const [token, setToken] = useState('') //because of this when you reload the page taken stands for '' and log out
+  const [token, setToken] = useState('') 
   const [userID, setId] = useState('')
   const [username, setName] = useState('')
 
+
+
+
   return (
+
     <AppContext.Provider value={{token, setToken, userID, setId, username, setName}}>
     <div className="App">
       <Nav/>
@@ -37,6 +43,7 @@ function App() {
       <Footer/> 
     </div>
     </AppContext.Provider>
+
   );
 }
 

@@ -7,7 +7,7 @@ import { AppContext } from "../App.js";
 import Maps from "./Maps.js";
 
 const Tour = (params)=>{
-    const {userID} = useContext(AppContext)
+    const userID = localStorage.getItem('userid')
     console.log(userID)
     const {id} = useParams()
     console.log(id)
@@ -25,21 +25,44 @@ const Tour = (params)=>{
 
     useEffect(()=>{
         getinfo()
-        getLikes()
         getImg()
-
     }, [])
+
 
     const getinfo = async() => {
         const response = await axios.get(`http://localhost:3001/tours/${id}`)
         setData(response.data)
         setStops(response.data.stops)
         setRest(response.data.eat)
+        getLikes()
     }
 
     const getLikes = async() => {
-        const response = await axios.get(`http://localhost:3001/tours/likes/${id}`)
-        setLikes(response.data[0].likes)
+        try{
+           const response = await axios.get(`http://localhost:3001/likes/${id}`)
+            setLikes(response.data[0].count)
+
+            userLike() 
+        } catch (e) {
+            console.log(e)
+            throw new Error('DB loading')
+        }
+        
+    }
+
+    const userLike = async() => {
+        if (!userID){
+            setLiked(false)
+        } else {
+            const response = await axios.post(`http://localhost:3001/likes/userlike`, {userid: userID, tourid: id})
+            if (response.data.length > 0) {
+                setLiked(true)
+            } else {
+                setLiked(false)
+            }
+        }
+        
+        
     }
 
     const getImg = async() => {
@@ -48,13 +71,16 @@ const Tour = (params)=>{
     }
 
     const updateLikes = async() => {
+        
         if (!liked){
-            const response = await axios.put(`http://localhost:3001/tours/${id}`, {likes: likes+1})
-            setLikes(response.data[0].likes)
+            const response = await axios.post(`http://localhost:3001/likes/add`, {userid: userID, tourid: id})
+
+            getLikes()
             setLiked(true)
         } else {
-            const response = await axios.put(`http://localhost:3001/tours/${id}`, {likes: likes-1})
-            setLikes(response.data[0].likes)
+            const response = await axios.post(`http://localhost:3001/likes/remove`, {userid: userID, tourid: id})
+
+            getLikes()
             setLiked(false)
         }
         

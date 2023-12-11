@@ -15,6 +15,9 @@ const Login = () => {
             const response = await axios.post("http://localhost:3001/users/login", {email, password});
             // console.log(response.data)
             if(response.status === 200) {
+                localStorage.setItem('refresh', response.data.refreshToken)
+                localStorage.setItem('userid', response.data.userid)
+                localStorage.setItem('username', response.data.username)
                 setToken(response.data.accesstoken)
                 setId(response.data.userid)
                 setName(response.data.username)

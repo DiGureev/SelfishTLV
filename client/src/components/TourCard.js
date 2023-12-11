@@ -1,4 +1,4 @@
-import { useState, useContext } from "react"
+import { useState, useContext, useEffect } from "react"
 import {Link, useNavigate} from 'react-router-dom'
 import axios from 'axios';
 import { AppContext } from "../App.js";
@@ -12,7 +12,12 @@ const TourCard = (props)=>{
     const info = JSON.parse(item.tourinfo)
     const [visibility, setVis] = useState('hidden')
     const [visibilityAdded, setVisAdded] = useState('hidden')
+    const [likes, setLikes] = useState(null)
     const navigate = useNavigate()
+
+    useEffect(()=>{
+        getLikes()
+    },[])
 
     const addtoFav = async(id) => {
         if (userID === '') {
@@ -39,6 +44,17 @@ const TourCard = (props)=>{
         }
     }
 
+    const getLikes = async() => {
+        try {
+            const response = await axios.get(`http://localhost:3001/likes/${item.tourid}`)
+            setLikes(response.data[0].count)
+        
+    } catch (e) {
+             console.log(e)
+             throw new Error('DB loading')
+         }
+    }
+
 
     return (<div className="tourCards" key={item.tourid}>
                             <div className="icon"><img src={icon}/></div>
@@ -47,7 +63,7 @@ const TourCard = (props)=>{
                             <p>{info.time}</p>
                             <p>{info.description}</p>
                             <div style={{display:'flex', justifyContent: 'right'}}>
-                                <div style={{marginRight:'10px'}}><FontAwesomeIcon icon={faHeart}/> {item.likes}</div>
+                                <div style={{marginRight:'10px'}}><FontAwesomeIcon icon={faHeart}/> {likes}</div>
                                 <div onClick={()=> addtoFav(item.tourid)}><FontAwesomeIcon icon={faBookmark} /> Add to Fav</div>
                             </div>
                             <Link to={`/tours/${item.tourid}`}>Go to the Tour</Link>
