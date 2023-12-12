@@ -7,6 +7,7 @@ import eventRouter from './routes/events.route.js'
 import likeRouter from './routes/likes.route.js'
 import cookieParser from 'cookie-parser';
 import path from 'path';
+import * as url from 'url';
 
 const app = express();
 dotenv.config();
@@ -15,6 +16,8 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use(cookieParser())
 app.use(cors())
+
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
 app.use(express.static(path.join(__dirname, "/client/build")));
 
