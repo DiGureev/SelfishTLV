@@ -57,7 +57,7 @@ const UserPage = (props) => {
                 return  <div key={index} className="favCard">
                         <h4 style={{margin:'0px'}}>{data.tourname}</h4>
                         <p>{data.time}</p>
-                        <Link to={`/tours/${item.tourid}`}>Go to the Tour</Link>
+                        <Link to={`/alltours/${item.tourid}`}>Go to the Tour</Link>
                         <button onClick={()=>delFav(item.tourid)}>Not Favorite anymore</button>
                     </div>
                 })

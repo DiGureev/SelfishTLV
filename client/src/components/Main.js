@@ -48,13 +48,13 @@ const Main = (props) => {
                 <div>
                     <h3>{info.tourname}</h3>
                     <p style={{marginLeft:'0px'}}>{info.description}</p>
-                    <Link to={`/tours/${tour.tourid}`}>Go to the Tour</Link>
+                    <Link to={`/alltours/${tour.tourid}`}>Go to the Tour</Link>
                     <p style={{textAlign:'right'}}><FontAwesomeIcon icon={faHeart}/> {like}</p>
                 </div>
             </div>
             </div>
             <EventBlock/>
-            <Link to={`/events`} >Go to all Events</Link>
+            <Link to={`/allevents`} >Go to all Events</Link>
         </div>
         </>
     )

@@ -63,7 +63,7 @@ const TourCard = (props)=>{
                     <p>{info.time}</p>
                     <p>{info.description}</p>
 
-                    <Link to={`/tours/${item.tourid}`} style={{marginBottom: '10px'}}>Go to the Tour</Link>
+                    <Link to={`/alltours/${item.tourid}`} style={{marginBottom: '10px'}}>Go to the Tour</Link>
 
                     <div style={{display:'flex', justifyContent: 'right'}}>
                         <div style={{marginRight:'10px'}}><FontAwesomeIcon icon={faHeart}/> {likes}</div>

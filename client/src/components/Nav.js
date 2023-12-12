@@ -65,14 +65,14 @@ const Nav = (props) => {
         <div className='navbar'>
             <div className='logodiv'><Link to='/'><img className='logoimg' src={logo} /></Link></div>
             <div className={`links ${hamclass}`}>
-            <Link to='/tours' onClick={handleClick}>Self-tours</Link>
+            <Link to='/alltours' onClick={handleClick}>Self-tours</Link>
             <Link to='/' onClick={handleClick}>Hungry-guides</Link>
-            <Link to='/events' onClick={handleClick}>Free events</Link>
+            <Link to='/allevents' onClick={handleClick}>Free events</Link>
             </div>
             <div className={`LogReg ${hamclass}`}>
             <Link to='/login' style={{display: displayLog}}>Log In</Link>
             <Link to='/signup' style={{display: displayLog}}>Sign Up</Link> 
-            <Link to={`/users/${userID}`} style={{display: displayName}}>Hi, {username}</Link>
+            <Link to={`/user/${userID}`} style={{display: displayName}}>Hi, {username}</Link>
             <Link style={{display: displayName}} onClick={logout}>Log Out</Link>
             </div>
 
