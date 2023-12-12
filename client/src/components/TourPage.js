@@ -91,7 +91,7 @@ const Tour = (params)=>{
     }
 
     const addtoFav = async() => {
-        if (userID === '') {
+        if (userID === '' || userID === 'null') {
             navigate('/login')
         } else {
             try {

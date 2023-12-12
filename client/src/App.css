@@ -188,6 +188,10 @@ h1 {
 
 }
 
+.regDivs{
+  margin: auto;
+}
+
 .regDivs button {
   width: 100px;
   padding: 10px 10px;

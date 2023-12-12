@@ -4,7 +4,6 @@ import axios from 'axios';
 import { useParams, useNavigate } from "react-router-dom";
 
 
-
 const Auth = (props) => {
     const {id} = useParams();
     const {token,setToken, setId, setName} = useContext(AppContext);
@@ -24,7 +23,7 @@ const Auth = (props) => {
             axios.defaults.headers.common['Refreshtoken'] = refreshToken;
             axios.defaults.headers.common['Id'] = id;
 
-            const response = await axios.post("http://localhost:3001/users/verify");
+            const response = await axios.post(`http://localhost:3001/users/verify`);
             
             console.log('status', response.status)
             if (response.status === 201) 
