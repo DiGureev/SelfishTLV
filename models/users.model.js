@@ -16,11 +16,6 @@ export const fetchRefresh = (userid) => {
     return db('users').select('userid','username','refresh').where({userid});
 };
 
-
-// export const getusername = (userid => {
-//     return db('users').select('username').where({userid});
-// })
-
 export const addFavorite = async (userid, tourid) => {
     const row = await db('favorites').select('userid', 'tourid').where({userid, tourid});
     if (row.length === 0) {

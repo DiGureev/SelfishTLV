@@ -1,5 +1,5 @@
 import express from "express";
-import {_allEvents, _todayEvents, _tomorrowEvents, _weekEvents} from '../controllers/events.controller.js'
+import {_allEvents, _todayEvents, _tomorrowEvents, _weekEvents} from '../controllers/events.controller.js';
 
 const eventRouter = express.Router();
 

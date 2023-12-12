@@ -1,24 +1,21 @@
 import { useEffect, useContext, useState } from 'react';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
 import { AppContext } from '../App.js';
 import { useNavigate } from 'react-router-dom';
-import logo from '../img/logo.png'
+import logo from '../img/logo.png';
 import axios from 'axios';
 
 const Nav = (props) => {
-    const {userID,setId, username,setName} = useContext(AppContext)
-    const [displayName, setDisName] = useState('none')
-    const [displayLog, setDisLog] = useState('')
-    const [hamclass, setHam] = useState('')
-    const navigate = useNavigate()
+    const {userID,setId, username,setName} = useContext(AppContext);
+    const [displayName, setDisName] = useState('none');
+    const [displayLog, setDisLog] = useState('');
+    const [hamclass, setHam] = useState('');
+    const navigate = useNavigate();
 
     useEffect(()=>{
-        let refresh = localStorage.getItem('refresh')
-        let id = localStorage.getItem('userid')
-        let username = localStorage.getItem('username')
-        console.log(refresh)
-        console.log(id)
-        console.log(username)
+        let refresh = localStorage.getItem('refresh');
+        let id = localStorage.getItem('userid');
+        let username = localStorage.getItem('username');
 
         if (refresh === 'null') {
             console.log('I am here')
@@ -30,14 +27,14 @@ const Nav = (props) => {
             setId(id)
             setName(username)
         }
-    }, [userID])
+    }, [userID]);
 
     const logout = async () => {
-        localStorage.setItem('refresh', null)
-        localStorage.setItem('userid', null)
+        localStorage.setItem('refresh', null);
+        localStorage.setItem('userid', null);
         
         try{
-            const response = await axios.post("http://localhost:3001/users/logout")
+            const response = await axios.post("/users/logout")
             console.log('I am here')
             setId('')
             setName('')
@@ -45,11 +42,12 @@ const Nav = (props) => {
             setDisLog('')
         } catch (e) {
             console.log(e)
-        }
+        };
+
         setTimeout(()=>{
             navigate('/')
-        },500)
-    }
+        },500);
+    };
 
     const hamburger = () => {
         if (hamclass === ''){
@@ -57,12 +55,11 @@ const Nav = (props) => {
         } else {
             setHam('')
         }
-        
-    }
+    };
 
     const handleClick = () => {
         setHam('')
-    }
+    };
 
     return (
         <div className='navbar'>
@@ -87,6 +84,6 @@ const Nav = (props) => {
         </div>
     );
     
-};
+}
 
 export default Nav

@@ -1,32 +1,28 @@
 import axios from 'axios';
 import {useState, useEffect} from 'react';
 import TourCard from './TourCard.js';
-import backimg from "../img/selftoursbackimg.png"
-
-
+import backimg from "../img/selftoursbackimg.png";
 
 const AllTours = (props) => {
-    const [data, setData] = useState([])
-    const [index1, setIndexOne] = useState(0)
-    const [index2, setIndexTwo] = useState(4)
-    const [displayPrev, setDisp1] = useState('')
-    const [displayNext, setDisp2] = useState('')
+    const [data, setData] = useState([]);
+    const [index1, setIndexOne] = useState(0);
+    const [index2, setIndexTwo] = useState(4);
     
-    const page = data.slice(index1,index2)
+    const page = data.slice(index1,index2);
 
     useEffect(()=>{
         showData()
-    },[])
+    },[]);
 
     const showData = async() => {
         try {
-            const response = await axios.get("http://localhost:3001/tours")
+            const response = await axios.get("/tours")
             setData(response.data)
 
         }catch (e) {
             console.log(e)
         }
-    }
+    };
 
     const nextPage= () => {
         if (index2 >= data.length) {
@@ -41,8 +37,7 @@ const AllTours = (props) => {
                 </div>
                 )
         } 
-        
-}
+    };
 
     const backPage= () => {
         if (index1 === 0) {
@@ -57,9 +52,7 @@ const AllTours = (props) => {
                 </div>
                 )
         }
-}
-        
-
+    };
 
     return (
         <div className='container'>
@@ -76,8 +69,8 @@ const AllTours = (props) => {
             }
         </div>
         <div className='PrevNextButtons'>
-            <button onClick={backPage} style={{display: displayPrev}}>Back</button>
-            <button onClick={nextPage} style={{display: displayNext}}>Next Page</button>
+            <button onClick={backPage}>Back</button>
+            <button onClick={nextPage}>Next Page</button>
         </div>
         </div>
     )

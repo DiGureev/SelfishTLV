@@ -1,7 +1,6 @@
 import insta from '../img/insta.png';
 import fb from '../img/fb.png';
-import {Link} from 'react-router-dom'
-
+import {Link} from 'react-router-dom';
 
 const Footer = (props) => {
     return (
