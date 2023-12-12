@@ -25,18 +25,18 @@ export const _getAllTours = async (req,res) => {
 
 };
 
-// export const _updateLikes = async (req,res) => {
-//     const tourid = req.params.id
-//     const {likes} = req.body
-//     try{
-//         const row = await updateLikes(tourid, likes)
-//         res.json(row)
-//     }catch(e){
-//         console.log(e)
-//         res.status(404).json({ msg: "Something went wrong with update tour" });
-//     }
+export const _updateLikes = async (req,res) => {
+    const tourid = req.params.id
+    const {likes} = req.body
+    try{
+        const row = await updateLikes(tourid, likes)
+        res.json(row)
+    }catch(e){
+        console.log(e)
+        res.status(404).json({ msg: "Something went wrong with update tour" });
+    }
 
-// };
+};
 
 export const _getLikes = async (req,res) => {
     const tourid = req.params.id
