@@ -51,7 +51,7 @@ const Tour = (params)=>{
     }
 
     const userLike = async() => {
-        if (!userID){
+        if (!userID || userID == 'null'){
             setLiked(false)
         } else {
             const response = await axios.post(`http://localhost:3001/likes/userlike`, {userid: userID, tourid: id})
@@ -71,18 +71,22 @@ const Tour = (params)=>{
     }
 
     const updateLikes = async() => {
-        
-        if (!liked){
-            const response = await axios.post(`http://localhost:3001/likes/add`, {userid: userID, tourid: id})
 
-            getLikes()
-            setLiked(true)
+        if (!userID || userID == 'null') {
+            navigate('/login')
         } else {
-            const response = await axios.post(`http://localhost:3001/likes/remove`, {userid: userID, tourid: id})
+            if (!liked){
+                const response = await axios.post(`http://localhost:3001/likes/add`, {userid: userID, tourid: id})
 
-            getLikes()
-            setLiked(false)
-        }
+                getLikes()
+                setLiked(true)
+            } else {
+                const response = await axios.post(`http://localhost:3001/likes/remove`, {userid: userID, tourid: id})
+
+                getLikes()
+                setLiked(false)
+            }
+       }
         
     }
 
@@ -114,7 +118,7 @@ const Tour = (params)=>{
 
     return (
         <div className="container">
-            <div style={{display:'flex', justifyContent:'space-between', marginTop:'30px', height: '30px'}}>
+            <div style={{display:'flex', justifyContent:'space-between', margin:'30px', height: '30px'}}>
                 <div onClick={()=>addtoFav(data.tourid)} style={{cursor:'pointer'}}>
                 <FontAwesomeIcon icon={faBookmark}/><span style={{color:'#FF93ED', fontWeight:'500', marginLeft:'10px'}}>Add to favorite</span>
                 <span style={{visibility: visibility}}>Added</span>

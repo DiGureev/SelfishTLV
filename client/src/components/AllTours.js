@@ -7,6 +7,12 @@ import backimg from "../img/selftoursbackimg.png"
 
 const AllTours = (props) => {
     const [data, setData] = useState([])
+    const [index1, setIndexOne] = useState(0)
+    const [index2, setIndexTwo] = useState(4)
+    const [displayPrev, setDisp1] = useState('')
+    const [displayNext, setDisp2] = useState('')
+    
+    const page = data.slice(index1,index2)
 
     useEffect(()=>{
         showData()
@@ -22,6 +28,39 @@ const AllTours = (props) => {
         }
     }
 
+    const nextPage= () => {
+        if (index2 >= data.length) {
+          
+        } else {
+             setIndexOne(index1+4);
+            setIndexTwo(index2+4);
+        
+            return (
+                <div>
+                {page.map((item, index) => <TourCard  key={index} element={item}/>)}
+                </div>
+                )
+        } 
+        
+}
+
+    const backPage= () => {
+        if (index1 === 0) {
+           
+        } else {
+            setIndexOne(index1-4);
+            setIndexTwo(index2-4);
+
+             return (
+                <div>
+                {page.map((item, index) => <TourCard  key={index} element={item}/>)}
+                </div>
+                )
+        }
+}
+        
+
+
     return (
         <div className='container'>
         <div className='leaddiv'>
@@ -31,12 +70,14 @@ const AllTours = (props) => {
             </div>
             <img src={backimg} style={{width:'50%'}}/>
         </div>
-        <div>
-
+        <div className='container'>
             {
-                data.map((item, index) => <TourCard  key={index} element={item}/>)
+            page.map((item, index) => <TourCard  key={index} element={item}/>)
             }
-
+        </div>
+        <div className='PrevNextButtons'>
+            <button onClick={backPage} style={{display: displayPrev}}>Back</button>
+            <button onClick={nextPage} style={{display: displayNext}}>Next Page</button>
         </div>
         </div>
     )

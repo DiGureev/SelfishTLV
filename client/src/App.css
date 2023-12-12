@@ -1,11 +1,13 @@
 body {
   background-color: #E8EEF3;
+  box-sizing: border-box;
 }
 
 .container {
   margin: auto;
   padding-bottom: 30px;
-  max-width: 800px;
+  width: 800px;
+  max-width: 100vw;
   position: relative;
   min-height: 100vh;
 }
@@ -24,6 +26,21 @@ body {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+}
+
+.hamburger {
+  display: none;
+  cursor: pointer;
+}
+
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: #2F276A;
 }
 
 .logodiv{
@@ -49,7 +66,7 @@ body {
 
 .backImg {
   position: absolute;
-  right: 0;
+  right: 500px;
   top: 120px;
   max-width: 550px;
 }
@@ -84,7 +101,7 @@ h1 {
 
 .leaddiv {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   font-weight: 500;
 }
 
@@ -298,4 +315,207 @@ border-radius: 3px;
   border: 0;
   padding: 5px 5px;
   border-radius: 3px;
+}
+
+.PrevNextButtons {
+  max-width: 200px;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+}
+
+.PrevNextButtons button {
+  background-color:#FED600 ;
+  color:#7E6EEF;
+  width: 100px;
+  padding: 10px 10px;
+  margin-top: 10px;
+  font-weight: 700;
+  font-size: 15px;
+  border: 1px solid white;
+  border-radius: 3px;
+}
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (max-width: 1280px){
+  .navbar {
+    height: 25px;
+    font-size: 12px;
+  }
+
+  .backImg{
+    width: 30%;
+    max-width: 400px;
+    right: 0px;
+  }
+
+  .MainTourCard{
+    width: 60%;
+    max-width: 500px;
+    font-size: 12px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+  
+  h3 {
+    font-size: 15px;
+  }
+
+  .regDivs button {
+    width: 80px;
+    font-size: 12px;
+    padding: 5px;
+  }
+
+
+} 
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (max-width: 768px) {
+
+  body {
+    padding: 0;
+    margin: 0;
+  }
+
+  .links {
+    display: block;
+    width: 50%;
+    position: fixed;
+    top: -100%;
+    gap: 0;
+    flex-direction: column;
+    background-color: #2F276A;
+    width: 100%;
+    transition: 0.3s;
+    height: auto;
+  }
+
+  .links a {
+    margin: 16px 0;
+    display: block;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+  }
+
+  .links.active {
+    top: 28px;
+    z-index: 2;
+    justify-content: center;
+
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  .container {
+    width: 100vw;
+    text-align: center;
+    padding-top: 20px !important;
+    margin: auto;
+  }
+
+  .MainTourCard{
+    display: block;
+    width: 80%;
+    padding: 5px 10px;
+    margin: auto;
+  }
+
+  .leadDivMain {
+    width: 100%;
+    text-align: center;
+  }
+
+  .backImg {
+    display: none;
+  }
+
+  .icon img {
+    max-width: 30%;
+    text-align: center;
+  }
+
+  .icon {
+    margin: auto;
+  }
+
+  .eventsBlock {
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+   }
+
+  .eventCardsClass {
+    width: 80%;
+   }
+
+  .footerLinks {
+    display: block;
+    text-align: center;
+    width: 80%;
+    margin: auto;
+  }
+
+  .tourCards .icon {
+    display: none;
+  }
+
+  .tourCards {
+    width: 80%;
+    margin: 10px auto;
+  }
+
+  .regDivs {
+    display: block !important;
+    width: 100vw !important;
+    text-align: center;
+
+  }
+
+  .regDivs div {
+    width: 80%;
+    margin: auto;
+    height: 40vh;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  .infoCard {
+    display: none;
+  }
+
+  .tourInfo {
+    margin: auto;
+  }
+
+  .favContainer {
+    display: block;
+    margin: auto;
+    padding: 10px;
+
+  
+  }
+
 }

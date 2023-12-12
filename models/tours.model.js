@@ -5,7 +5,7 @@ export const gettour = (tourid) => {
 }
 
 export const getAllTours = () => {
-    return db('tours').select("tourid","tourinfo", "likes");
+    return db('tours').select("tourid","tourinfo");
 }
 
 export const getLikes = (tourid) => {
