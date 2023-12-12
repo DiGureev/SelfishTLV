@@ -6,8 +6,8 @@ import tourRouter from './routes/tours.route.js';
 import eventRouter from './routes/events.route.js'
 import likeRouter from './routes/likes.route.js'
 import cookieParser from 'cookie-parser';
-// import path from 'path';
-// import * as url from 'url';
+import path from 'path';
+import * as url from 'url';
 
 const app = express();
 dotenv.config();
@@ -17,13 +17,13 @@ app.use(express.json());
 app.use(cookieParser())
 app.use(cors())
 
-// const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
-// app.use(express.static(path.join(__dirname, "/client/build")));
+app.use(express.static(path.join(__dirname, "/client/build")));
 
-// app.get("*", (req, res) => {
-//   res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
-// });
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+});
 
 
 app.listen(process.env.PORT || 3001, () => {
