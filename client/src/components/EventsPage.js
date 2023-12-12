@@ -13,7 +13,7 @@ const EventsPage = (props)=>{
 
     const getAllEvents = async() => {
         try {
-            const response = await axios.get("/events/");
+            const response = await axios.get("/api/events/");
             setEvents(response.data);
         }catch (e) {
             console.log(e);
@@ -22,7 +22,7 @@ const EventsPage = (props)=>{
 
     const getToday = async() => {
         try {
-            const response = await axios.get("/events/today");
+            const response = await axios.get("/api/events/today");
             setEvents(response.data);
         }catch (e) {
             console.log(e)
@@ -31,7 +31,7 @@ const EventsPage = (props)=>{
 
     const getTomorrow = async() => {
         try {
-            const response = await axios.get("/events/tomorrow");
+            const response = await axios.get("/api/events/tomorrow");
             setEvents(response.data);
         }catch (e) {
             console.log(e)
@@ -40,7 +40,7 @@ const EventsPage = (props)=>{
 
     const getWeek = async() => {
         try {
-            const response = await axios.get("/events/week");
+            const response = await axios.get("/api/events/week");
             setEvents(response.data);
         }catch (e) {
             console.log(e)

@@ -30,7 +30,7 @@ app.listen(process.env.PORT || 3001, () => {
     console.log(`run on ${process.env.PORT || 3001}`);
   });
 
-app.use("/users", userRouter)
-app.use("/tours", tourRouter)
-app.use("/events", eventRouter)
-app.use("/likes", likeRouter)
+app.use("/api/users", userRouter)
+app.use("/api/tours", tourRouter)
+app.use("/api/events", eventRouter)
+app.use("/api/likes", likeRouter)

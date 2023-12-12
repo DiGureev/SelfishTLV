@@ -12,7 +12,7 @@ const Login = () => {
 
     const logging = async () => {
         try {
-            const response = await axios.post("/users/login", {email, password});
+            const response = await axios.post("/api/users/login", {email, password});
             // console.log(response.data)
             if(response.status === 200) {
                 localStorage.setItem('refresh', response.data.refreshToken);

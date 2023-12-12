@@ -11,7 +11,7 @@ const SignUp = () => {
 
     const handlesignup = async () => {
         try{
-            const response = await axios.post("/users/signup", {username, email, password});
+            const response = await axios.post("/api/users/signup", {username, email, password});
             if(response.status === 200) {
                 setMsg("");
                 navigate("/login");

@@ -34,8 +34,7 @@ const Nav = (props) => {
         localStorage.setItem('userid', null);
         
         try{
-            const response = await axios.post("/users/logout")
-            console.log('I am here')
+            const response = await axios.post("/api/users/logout")
             setId('')
             setName('')
             setDisName('none')

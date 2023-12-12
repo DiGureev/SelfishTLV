@@ -16,7 +16,7 @@ const UserPage = (props) => {
     
     const getfav = async () => {
         try {
-            const response = await axios.get(`/users/favorites/${id}`)
+            const response = await axios.get(`/api/users/favorites/${id}`)
             setFav(response.data)
             if (response.data.length === 0) {
                 setDisp('')
@@ -30,7 +30,7 @@ const UserPage = (props) => {
 
     const delFav = async (tourid) => {
         try {
-            const response = await axios.delete(`/users/favorites/${id}&${tourid}`)
+            const response = await axios.delete(`/api/users/favorites/${id}&${tourid}`)
             getfav()
         }catch (e) {
             console.log(e)

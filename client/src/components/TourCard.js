@@ -24,7 +24,7 @@ const TourCard = (props)=>{
             navigate('/login');
         } else {
             try {
-                const response = await axios.post("/users/favorites", {userid: userID, tourid: id})
+                const response = await axios.post("/api/users/favorites", {userid: userID, tourid: id})
                 
                 if (response.data[0] == undefined){
                 setVis('')
@@ -46,7 +46,7 @@ const TourCard = (props)=>{
 
     const getLikes = async() => {
         try {
-            const response = await axios.get(`/likes/${item.tourid}`)
+            const response = await axios.get(`/api/likes/${item.tourid}`)
             setLikes(response.data[0].count)
         
     } catch (e) {

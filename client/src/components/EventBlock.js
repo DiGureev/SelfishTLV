@@ -11,7 +11,7 @@ const EventBlock = (props) => {
 
     const getWeekEvents = async() => {
         try {
-            const response = await axios.get("/events/week")
+            const response = await axios.get("/api/events/week")
             setEvents(response.data)
         }catch (e) {
             console.log(e)

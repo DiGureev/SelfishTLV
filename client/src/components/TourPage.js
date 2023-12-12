@@ -50,7 +50,7 @@ const Tour = (params)=>{
         if (!userID || userID === 'null'){
             setLiked(false)
         } else {
-            const response = await axios.post(`/likes/userlike`, {userid: userID, tourid: id})
+            const response = await axios.post(`/api/likes/userlike`, {userid: userID, tourid: id})
             if (response.data.length > 0) {
                 setLiked(true)
             } else {
@@ -60,7 +60,7 @@ const Tour = (params)=>{
     };
 
     const getImg = async() => {
-        const response = await axios.get(`/tours/img/${id}`)
+        const response = await axios.get(`/api/tours/img/${id}`)
         setImg(response.data[0].mainimg)
     }
 
@@ -70,12 +70,12 @@ const Tour = (params)=>{
             navigate('/login')
         } else {
             if (!liked){
-                const response = await axios.post(`/likes/add`, {userid: userID, tourid: id})
+                const response = await axios.post(`/api/likes/add`, {userid: userID, tourid: id})
 
                 getLikes()
                 setLiked(true)
             } else {
-                const response = await axios.post(`/likes/remove`, {userid: userID, tourid: id})
+                const response = await axios.post(`/api/likes/remove`, {userid: userID, tourid: id})
 
                 getLikes()
                 setLiked(false)
@@ -89,7 +89,7 @@ const Tour = (params)=>{
             navigate('/login')
         } else {
             try {
-            const response = await axios.post("/users/favorites", {userid: userID, tourid: id})
+            const response = await axios.post("/api/users/favorites", {userid: userID, tourid: id})
             
             if (response.data[0] == undefined){
             setVis('')

@@ -19,13 +19,13 @@ const Main = (props) => {
 
     const showData = async() => {
         try {
-            const response = await axios.get("/tours/");
+            const response = await axios.get("/api/tours/");
          
             let arr = response.data;
             let tour = arr[Math.floor(Math.random()*arr.length)];
             let info = JSON.parse(tour.tourinfo);
 
-            const likeResponse = await axios.get(`/likes/${tour.tourid}`);
+            const likeResponse = await axios.get(`/api/likes/${tour.tourid}`);
             setLike(likeResponse.data[0].count);
            
             setData(tour);
