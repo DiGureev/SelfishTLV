@@ -44,7 +44,7 @@ const UserPage = (props) => {
                 <h1>Hi, {username}!</h1>
                 <p style={{color: '#89A3F9'}}>This is your favorite routes!</p>
             </div>
-            <div>
+            <div style={{textAlign:'right'}}>
                 <img src={emoji} style={{width:'60%'}}/>
             </div>
         </div>

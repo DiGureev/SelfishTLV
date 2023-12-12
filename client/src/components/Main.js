@@ -41,7 +41,7 @@ const Main = (props) => {
         <>
         <img src={img} className='backImg'/>
         <div className='container'>
-            <div>
+            <div className='leadDivMain'>
             <h2>😮 Self-tour of the day</h2>
             <div className='MainTourCard'>
                 <div className='icon'><img src={icon}/></div>
