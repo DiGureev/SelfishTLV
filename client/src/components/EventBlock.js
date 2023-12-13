@@ -13,6 +13,7 @@ const EventBlock = (props) => {
         try {
             const response = await axios.get("/api/events/week")
             setEvents(response.data)
+            console.log('events=>',events)
         }catch (e) {
             console.log(e)
         }

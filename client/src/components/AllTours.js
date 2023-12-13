@@ -19,6 +19,9 @@ const AllTours = (props) => {
             const response = await axios.get("/api/tours")
             setData(response.data)
 
+            console.log('data=>',data)
+            console.log('page=>',page)
+
         }catch (e) {
             console.log(e)
         }
