@@ -9,7 +9,7 @@ import {
 
 const google = window.google = window.google ? window.google : {}
 
-const API_KEY = 'AIzaSyDHscou3ulhuumOBJHMKEjeSmyNsyaCoSw'
+const REACT_APP_API_KEY = process.env.REACT_APP_API_KEY
 
 const Maps = (props) => {
     const latlng = props.latlng;
@@ -25,7 +25,7 @@ const Maps = (props) => {
 
 
     const {isLoaded} = useLoadScript({
-        googleMapsApiKey: API_KEY,
+        googleMapsApiKey: REACT_APP_API_KEY,
         libraries: ['places']
     });
 

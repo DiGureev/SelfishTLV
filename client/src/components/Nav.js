@@ -17,8 +17,7 @@ const Nav = (props) => {
         let id = localStorage.getItem('userid');
         let username = localStorage.getItem('username');
 
-        if (refresh === 'null') {
-            console.log('I am here')
+        if (refresh === 'null' || username ==='') {
             setDisName('none')
             setDisLog('')
         } else {

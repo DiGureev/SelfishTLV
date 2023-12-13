@@ -530,4 +530,8 @@ border-radius: 3px;
   
   }
 
+  .noFavorites {
+    width:80vw;
+  }
+
 }
