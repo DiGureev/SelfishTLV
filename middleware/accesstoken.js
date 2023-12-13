@@ -1,8 +1,8 @@
 import jwt from 'jsonwebtoken';
-import {fetchRefresh} from '../models/users.model.js'
+import {fetchRefresh} from '../models/users.model.js';
 import dotenv from 'dotenv';
 import bcrypt from 'bcrypt';
-dotenv.config()
+dotenv.config();
 
 export const token = async (req, res, next) => {
 

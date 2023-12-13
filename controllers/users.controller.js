@@ -82,7 +82,7 @@ export const _addFavorite = async (req,res) => {
       res.status(404).json({ msg: "Can't add to favorite" });
   }
 
-}
+};
 
 export const _getFavorite = async (req,res) => {
   const userid = req.params.id
@@ -96,7 +96,7 @@ export const _getFavorite = async (req,res) => {
       res.status(404).json({ msg: "Can't get favorites" });
   }
 
-}
+};
 
 export const _deleteFavorite = async (req,res) => {
   const {userid, tourid} = req.params
@@ -110,4 +110,4 @@ export const _deleteFavorite = async (req,res) => {
       res.status(404).json({ msg: "Can't delete favorites" });
   }
 
-}
+};

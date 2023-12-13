@@ -1,41 +1,44 @@
 import { useState, useContext } from "react";
 import { AppContext } from '../App.js';
 import { useNavigate, Link } from "react-router-dom";
-import axios from 'axios'
+import axios from 'axios';
 
 const Login = () => {
-    const [email, setEmail] = useState('')
-    const [password, setPass] = useState('')
-    const [msg, setMsg] = useState('')
-    const {setToken, setId, setName} = useContext(AppContext)
-    const navigate = useNavigate()
+    const [email, setEmail] = useState('');
+    const [password, setPass] = useState('');
+    const [msg, setMsg] = useState('');
+    const {setToken, setId, setName} = useContext(AppContext);
+    const navigate = useNavigate();
 
     const logging = async () => {
         try {
-            const response = await axios.post("http://localhost:3001/users/login", {email, password});
+            const response = await axios.post("/api/users/login", {email, password});
             // console.log(response.data)
             if(response.status === 200) {
-                localStorage.setItem('refresh', response.data.refreshToken)
-                localStorage.setItem('userid', response.data.userid)
-                localStorage.setItem('username', response.data.username)
-                setToken(response.data.accesstoken)
-                setId(response.data.userid)
-                setName(response.data.username)
+                localStorage.setItem('refresh', response.data.refreshToken);
+                localStorage.setItem('userid', response.data.userid);
+                localStorage.setItem('username', response.data.username);
+
+                setToken(response.data.accesstoken);
+                setId(response.data.userid);
+                setName(response.data.username);
                 setMsg("");
                 navigate("/");
             }
         } catch (e) {
             if (e.response.data.msg == "Email not found, please Sign Up"){
                 setMsg(e.response.data.msg);
+
                 setTimeout(()=>{
                     navigate("/signup");
-                }, 1000)
+                }, 1000);
+
             } else {
                 setMsg(e.response.data.msg);
             }
             
         }
-    }
+    };
 
     return (
         <div className="container" style={{paddingTop:'100px'}}>

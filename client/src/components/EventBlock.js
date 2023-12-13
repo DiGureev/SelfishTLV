@@ -1,7 +1,6 @@
 import {useState, useEffect} from 'react';
-import {Link} from 'react-router-dom';
 import axios from 'axios';
-import EventsCard from './EventsCard.js'
+import EventsCard from './EventsCard.js';
 
 const EventBlock = (props) => {
     const [events, setEvents] = useState([])
@@ -12,8 +11,9 @@ const EventBlock = (props) => {
 
     const getWeekEvents = async() => {
         try {
-            const response = await axios.get("http://localhost:3001/events/week")
+            const response = await axios.get("/api/events/week")
             setEvents(response.data)
+            console.log('events=>',events)
         }catch (e) {
             console.log(e)
         }

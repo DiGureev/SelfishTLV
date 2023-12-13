@@ -1,7 +1,6 @@
 import insta from '../img/insta.png';
 import fb from '../img/fb.png';
-import {Link} from 'react-router-dom'
-
+import {Link} from 'react-router-dom';
 
 const Footer = (props) => {
     return (
@@ -9,9 +8,9 @@ const Footer = (props) => {
             <div className="footerLinks">
                 <div >
                     <h4>What we have</h4>
-                    <p><Link to='/tours'>Self-tours</Link></p>
-                    <p><Link to='/tours'>Hungry-guides</Link></p>
-                    <p><Link to='/events'>Free events</Link></p>
+                    <p><Link to='/alltours'>Self-tours</Link></p>
+                    <p><Link to='/'>Hungry-guides</Link></p>
+                    <p><Link to='/allevents'>Free events</Link></p>
                 </div>
                 <div>
                     <h4>About us</h4>

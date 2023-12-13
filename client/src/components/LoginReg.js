@@ -1,10 +1,10 @@
-import Login from './Login.js'
-import SignUp from './SignUp.js'
+import Login from './Login.js';
+import SignUp from './SignUp.js';
 
 const LoginReg = (props) => {
     const title = props.title;
 
-    if (title ==='Log In'){
+    if (title ==='Log In') {
         return (
         <div className='container'>
         <Login/>
@@ -16,7 +16,7 @@ const LoginReg = (props) => {
         <SignUp/>
         </div>
         )
-    }
+    };
 }
 
 export default LoginReg

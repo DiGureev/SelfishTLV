@@ -34,10 +34,10 @@ function App() {
         <Route path='/' element={<Main/>}/>
         <Route path='/login' element={<LoginReg title='Log In'/>}/>
         <Route path='/signup' element={<LoginReg title='Sign Up'/>}/>
-        <Route path='/users/:id' element={<Auth><UserPage/></Auth>}/>
-        <Route path='/tours' element={<AllTours/>}/>
-        <Route path='/tours/:id' element={<TourPage/>}/>
-        <Route path='/events' element={<EventsPage/>}/>
+        <Route path='/user/:id' element={<Auth><UserPage/></Auth>}/>
+        <Route path='/alltours' element={<AllTours/>}/>
+        <Route path='/alltours/:id' element={<TourPage/>}/>
+        <Route path='/allevents' element={<EventsPage/>}/>
       </Routes>  
       </div> 
       <Footer/> 

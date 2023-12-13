@@ -1,17 +1,17 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import axios from 'axios'
+import axios from 'axios';
 
 const SignUp = () => {
-    const [username, setUsername] = useState('')
-    const [email, setEmail] = useState('')
-    const [password, setPass] = useState('')
-    const [msg, setMsg] = useState('')
-    const navigate = useNavigate()
+    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPass] = useState('');
+    const [msg, setMsg] = useState('');
+    const navigate = useNavigate();
 
     const handlesignup = async () => {
         try{
-            const response = await axios.post("http://localhost:3001/users/signup", {username, email, password});
+            const response = await axios.post("/api/users/signup", {username, email, password});
             if(response.status === 200) {
                 setMsg("");
                 navigate("/login");
@@ -21,7 +21,7 @@ const SignUp = () => {
             console.log(e);
             setMsg(e.response.data.msg);
         }
-    }
+    };
 
     return (
         <div className="container" style={{paddingTop:'100px'}}>

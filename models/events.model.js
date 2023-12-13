@@ -1,7 +1,7 @@
 import { db } from "../config/db.js";
 
-const date = new Date()
-date.setDate(date.getDate()+1)
+const date = new Date();
+date.setDate(date.getDate()+1);
 
 export const allEvents = () => {
     return db('allevents').select('id','title', 'date', 'link').orderBy('date');

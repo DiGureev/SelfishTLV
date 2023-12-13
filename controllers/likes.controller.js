@@ -1,4 +1,4 @@
-import {alllikes, userlike, addlike, minusLikes} from '../models/likes.model.js'
+import {alllikes, userlike, addlike, minusLikes} from '../models/likes.model.js';
 
 export const _alllikes = async (req,res) => {
     const tourid = req.params.id
@@ -10,13 +10,10 @@ export const _alllikes = async (req,res) => {
         console.log(e)
         res.status(404).json({ msg: "Something went wrong with getting likes" });
     }
-}
+};
 
 export const _userlike = async (req,res) => {
     const {userid, tourid} = req.body
-
-    console.log('user',userid)
-    console.log('tour',tourid)
     try{
         const row = await userlike(userid, tourid)
         res.json(row)
@@ -25,7 +22,7 @@ export const _userlike = async (req,res) => {
         console.log(e)
         res.status(404).json({ msg: "Something went wrong with getting user likes" });
     }
-}
+};
 
 export const _addlike = async (req,res) => {
     const {userid, tourid} = req.body
@@ -36,7 +33,7 @@ export const _addlike = async (req,res) => {
         console.log(e)
         res.status(404).json({ msg: "Something went wrong with getting user likes" });
     }
-}
+};
 
 export const _minusLikes = async (req,res) => {
     const {userid, tourid} = req.body
@@ -47,4 +44,4 @@ export const _minusLikes = async (req,res) => {
         console.log(e)
         res.status(404).json({ msg: "Something went wrong with getting user likes" });
     }
-}
+};

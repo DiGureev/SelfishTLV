@@ -5,17 +5,18 @@ import {
     GoogleMap,
     Marker,
     DirectionsRenderer,
-} from '@react-google-maps/api'
+} from '@react-google-maps/api';
 
 const google = window.google = window.google ? window.google : {}
 
+const REACT_APP_API_KEY = process.env.REACT_APP_API_KEY
+
 const Maps = (props) => {
-    const latlng = props.latlng
-    console.log(latlng)//doesnt work
+    const latlng = props.latlng;
     const mapRef = useRef()
     const [directions, setDir] = useState();
     const center = useMemo(()=> ({lat: 32.0853, lng: 34.7818}), []);
-    // const latlng = useMemo(()=> (props.latlng), []);
+
     const options = useMemo(()=> ({
         mapId: 'd46503c02ab29bed',
         disableDefaultUI: true,
@@ -24,11 +25,11 @@ const Maps = (props) => {
 
 
     const {isLoaded} = useLoadScript({
-        googleMapsApiKey: process.env.REACT_APP_API_KEY,
+        googleMapsApiKey: REACT_APP_API_KEY,
         libraries: ['places']
-    })
+    });
 
-    const onLoad = useCallback(map => mapRef.current = map, [])
+    const onLoad = useCallback(map => mapRef.current = map, []);
 
     const fetchDirection = (item1, item2, index)=>{
         setDir({})
@@ -50,8 +51,7 @@ const Maps = (props) => {
                 setDir(result);
             }
         })
-
-    }
+    };
 
     if (!isLoaded) return <div>Loading...</div>
 

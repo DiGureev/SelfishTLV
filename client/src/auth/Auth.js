@@ -23,7 +23,7 @@ const Auth = (props) => {
             axios.defaults.headers.common['Refreshtoken'] = refreshToken;
             axios.defaults.headers.common['Id'] = id;
 
-            const response = await axios.post(`http://localhost:3001/users/verify`);
+            const response = await axios.post(`/api/users/verify`);
             
             console.log('status', response.status)
             if (response.status === 201) 

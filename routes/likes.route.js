@@ -1,5 +1,5 @@
 import express from "express";
-import {_alllikes, _userlike, _addlike, _minusLikes} from '../controllers/likes.controller.js'
+import {_alllikes, _userlike, _addlike, _minusLikes} from '../controllers/likes.controller.js';
 
 
 const likeRouter = express.Router();

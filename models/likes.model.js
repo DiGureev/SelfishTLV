@@ -11,9 +11,8 @@ export const userlike = (userid, tourid) => {
 
 export const addlike = (userid, tourid) => {
     return db('likes').insert({userid, tourid})
-    // return db('likes').count('tourid').where({tourid})
 };
 
 export const minusLikes = (userid, tourid) => {
     return db('likes').where({userid, tourid}).del();
-}
+};
