@@ -27,7 +27,7 @@ const Tour = (params)=>{
 
 
     const getinfo = async() => {
-        const response = await axios.get(`/tours/${id}`)
+        const response = await axios.get(`/api/tours/${id}`)
         console.log(response)
         setData(response.data)
         setStops(response.data.stops)
@@ -37,7 +37,7 @@ const Tour = (params)=>{
 
     const getLikes = async() => {
         try{
-           const response = await axios.get(`/likes/${id}`)
+           const response = await axios.get(`/api/likes/${id}`)
            setLikes(response.data[0].count)
            userLike() 
 
