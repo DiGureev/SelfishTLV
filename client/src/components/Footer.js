@@ -34,6 +34,6 @@ const Footer = (props) => {
             </div>
         </div>
     )
-}
+};
 
-export default Footer
+export default Footer;

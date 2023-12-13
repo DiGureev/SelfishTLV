@@ -78,6 +78,6 @@ const AllTours = (props) => {
         </div>
     )
 
-}
+};
 
-export default AllTours
+export default AllTours;

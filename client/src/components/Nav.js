@@ -82,6 +82,6 @@ const Nav = (props) => {
         </div>
     );
     
-}
+};
 
-export default Nav
+export default Nav;

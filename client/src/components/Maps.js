@@ -67,6 +67,6 @@ const Maps = (props) => {
         </div>
     
         )
-}
+};
 
-export default Maps
+export default Maps;

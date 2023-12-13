@@ -61,6 +61,6 @@ const Main = (props) => {
     } else {
         return <div className='container'></div>
     }
-}
+};
 
-export default Main
+export default Main;

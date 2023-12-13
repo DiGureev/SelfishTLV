@@ -81,6 +81,6 @@ const EventsPage = (props)=>{
         </div>
     )
 
-}   
+};
 
-export default EventsPage
+export default EventsPage;

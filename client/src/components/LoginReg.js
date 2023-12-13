@@ -17,6 +17,6 @@ const LoginReg = (props) => {
         </div>
         )
     };
-}
+};
 
-export default LoginReg
+export default LoginReg;

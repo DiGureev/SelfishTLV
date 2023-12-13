@@ -9,6 +9,6 @@ const EventsCard = (props) => {
             <a href={item.link} target='_blank'><button>Go to the website</button></a>
         </div>
     )
-}
+};
 
-export default EventsCard
+export default EventsCard;
