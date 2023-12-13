@@ -11,6 +11,7 @@ SelfishTLV is a website for Olims and anyone who wants to get to know our beauti
 * Elephant SQL
 * Google map API + Google Map react module
 * JWT module for the Authentication
+* Figma - to build prototype
 
 I built a full stack JS APP with some help from Python. API built with Node.js, all front-end part - with React.
 
