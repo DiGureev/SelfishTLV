@@ -28,6 +28,7 @@ const Tour = (params)=>{
 
     const getinfo = async() => {
         const response = await axios.get(`/tours/${id}`)
+        console.log(response)
         setData(response.data)
         setStops(response.data.stops)
         setRest(response.data.eat)

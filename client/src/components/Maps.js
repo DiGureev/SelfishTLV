@@ -9,6 +9,8 @@ import {
 
 const google = window.google = window.google ? window.google : {}
 
+const API_KEY = process.env.API_KEY
+
 const Maps = (props) => {
     const latlng = props.latlng;
     const mapRef = useRef()
@@ -23,7 +25,7 @@ const Maps = (props) => {
 
 
     const {isLoaded} = useLoadScript({
-        googleMapsApiKey: process.env.REACT_APP_API_KEY,
+        googleMapsApiKey: API_KEY,
         libraries: ['places']
     });
 
