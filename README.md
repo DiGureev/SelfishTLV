@@ -1,3 +1,5 @@
+![hackaton-project](https://github.com/DiGureev/SelfishTLV/assets/135432172/10666498-1767-49ae-8c8a-b56cd1c9642d)
+
 # SelfishTLV 
 
 SelfishTLV is a website for Olims and anyone who wants to get to know our beautiful Tel-Aviv. I am in love with the city and want to share it with others. The main thing of the project is pre-built routes with interactive Google map and suggestions where to grab a coffee and where to eat along the way. 
