@@ -5,7 +5,7 @@ const eventRouter = express.Router();
 
 eventRouter.get("/", _allEvents);
 eventRouter.get("/today", _todayEvents);
-eventRouter.get("/tomorrow", _tomorrowEvents); //tried to put here a middleware - problem with cookies
+eventRouter.get("/tomorrow", _tomorrowEvents); 
 eventRouter.get("/week", _weekEvents);
 
 export default eventRouter

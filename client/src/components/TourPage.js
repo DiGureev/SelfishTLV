@@ -28,7 +28,6 @@ const Tour = (params)=>{
 
     const getinfo = async() => {
         const response = await axios.get(`/api/tours/${id}`)
-        console.log(response)
         setData(response.data)
         setStops(response.data.stops)
         setRest(response.data.eat)
@@ -170,6 +169,6 @@ const Tour = (params)=>{
             </div>
         </div>
     )
-}
+};
 
-export default Tour
+export default Tour;

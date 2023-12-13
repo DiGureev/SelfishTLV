@@ -77,6 +77,6 @@ const TourCard = (props)=>{
                 </div>
              </div>
     )
-}
+};
 
-export default TourCard
+export default TourCard;

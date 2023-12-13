@@ -53,6 +53,6 @@ const Auth = (props) => {
 
     return redirect ? <div className="container">{props.children}</div> : <div className="container"><h2 style={{display: display}}>You are not authorized</h2></div>;
 
-}
+};
 
-export default Auth
+export default Auth;

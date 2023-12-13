@@ -30,10 +30,8 @@ const EventBlock = (props) => {
             }
         </div>
         </>
-    )
+    );
 
+};
 
-
-}
-
-export default EventBlock
+export default EventBlock;

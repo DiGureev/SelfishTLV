@@ -1,5 +1,6 @@
 import { db } from "../config/db.js";
 
+//define start point - today's date
 const date = new Date();
 date.setDate(date.getDate()+1);
 
