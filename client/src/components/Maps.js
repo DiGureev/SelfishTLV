@@ -1,6 +1,4 @@
 import { useState,useMemo, useCallback, useRef } from 'react';
-import dotenv from 'dotenv';
-dotenv.config();
 
 import {
     useLoadScript,
